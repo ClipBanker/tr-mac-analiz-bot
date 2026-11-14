@@ -1,0 +1,44 @@
+name: betting-bot
+
+on:
+  schedule:
+    - cron: "5 * * * *"   # каждый час в :05 (UTC). GitHub может запускать с задержкой до ~15 мин
+  workflow_dispatch:       # кнопка ручного запуска во вкладке Actions
+
+permissions:
+  contents: write          # чтобы сохранять state.json обратно в репозиторий
+
+concurrency:
+  group: betting-bot
+  cancel-in-progress: false
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Run bot
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+        run: python bot.py
+
+      - name: Save state
+        if: always()
+        run: |
+          git config user.name "betting-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add state.json
+          git diff --cached --quiet || git commit -m "state: $(date -u +%F_%H:%M)"
+          git push

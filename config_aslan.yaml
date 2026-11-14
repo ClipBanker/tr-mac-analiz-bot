@@ -1,0 +1,89 @@
+# ================== Настройки канала Aslan Team ==================
+# Всё, что можно менять без правки кода.
+
+timezone: "Europe/Istanbul"
+
+# Лиги в порядке приоритета (ID лиг API-Football).
+# Бот берёт матчи сверху вниз, пока не наберёт max_predictions_per_day.
+leagues:
+  - {id: 203, name: "Süper Lig"}
+  - {id: 5,   name: "UEFA Uluslar Ligi"}
+  - {id: 2,   name: "Şampiyonlar Ligi"}
+  - {id: 3,   name: "Avrupa Ligi"}
+  - {id: 848, name: "Konferans Ligi"}
+  - {id: 206, name: "Türkiye Kupası"}
+  - {id: 39,  name: "Premier Lig"}
+  - {id: 140, name: "La Liga"}
+  - {id: 135, name: "Serie A"}
+  - {id: 78,  name: "Bundesliga"}
+  - {id: 61,  name: "Ligue 1"}
+  - {id: 204, name: "1. Lig"}
+
+# Матчи с турецкими клубами в еврокубках поднимаются в приоритете.
+priority_teams:
+  - Türkiye
+  - Turkey
+  - Galatasaray
+  - Fenerbahçe
+  - Fenerbahce
+  - Beşiktaş
+  - Besiktas
+  - Trabzonspor
+  - Başakşehir
+  - Basaksehir
+
+max_predictions_per_day: 4
+
+# Расписание (часы по Стамбулу)
+post_interval_hours: 2         # прогноз каждые 2 часа
+quiet_hours: [1, 9]            # с 01:00 до 09:00 не постим (уберите строку, чтобы постить круглосуточно)
+horizon_hours: 12              # берём матчи, которые начнутся в ближайшие 12 часов
+min_before_kickoff_min: 25     # ближе 25 минут к старту уже не постим
+results_check_after_min: 125   # через сколько минут после старта проверять счёт
+digest_hour: 9                 # утренний анонс «Günün maçları» (выходит с 9 до 11)
+digest_size: 6                 # сколько матчей в анонсе
+max_tries_per_tick: 4          # сколько матчей проверить за запуск, если у первых нет статистики
+express_hour: 15               # экспресс дня выходит с 15:00 (уберите строку, чтобы отключить)
+express_size: 3                # событий в экспрессе
+
+# Картинки и глубина разбора
+images: true                   # карточка матча к каждому прогнозу, фото из папки photos/ к утренним постам
+use_standings: true            # учитывать место в таблице
+use_injuries: true             # учитывать травмы и дисквалификации
+
+# Если в лигах выше матчей нет (например, пауза на сборные) — брать матчи
+# из других лиг. Страны в порядке приоритета.
+fallback_any_league: true
+fallback_countries: [World, Turkey, England, Spain, Italy, Germany, France, Portugal, Netherlands, Belgium, Brazil, Argentina, Saudi-Arabia, USA, Mexico, Greece, Scotland, Austria, Switzerland]
+
+# Нейросеть для текстов: gemini | anthropic | openai | none
+# none — бот пишет по шаблону на основе данных API-Football (бесплатно, но суше).
+llm_provider: "gemini"
+llm_model: "gemini-pro-latest"   # если модель недоступна, бот сам перейдёт на gemini-flash-latest
+
+# Ограничения на коэффициенты для выбора прогноза
+min_odd: 1.40
+max_odd: 2.60
+
+channel_name: "ASLAN TEAM"   # подпись на карточках
+disclaimer: "🔞 18+"
+# Строка в конце прогноза (выбирается случайно). Пустой список — без неё.
+cta_lines:
+  - "Aslanlar, katılıyorsanız 🦁 bırakın!"
+  - "Siz bu maçı nasıl görüyorsunuz? Ekip olarak merak ediyoruz 👇"
+  - "Kanalı arkadaşlarınızla paylaşın, sürü büyüsün 🦁"
+
+# Стиль канала (отличается от первого канала)
+photos_dir: photos_aslan
+avoid_state_file: state.json   # не брать матчи, которые уже разобрал первый канал (кроме матчей турецких команд)
+card_accent: [255, 120, 30]
+express_accent: [255, 70, 70]
+pick_label: "Tercihimiz"
+card_pick_label: "TAHMİNİMİZ"
+result_win: ["Aslanlar kazandı! 🦁✅", "Bu da geldi, ekip olarak gururluyuz ✅", "Kükredik! 🦁🔥"]
+result_loss: ["Bu sefer olmadı ❌ Aslan yine kalkar.", "Kaybettik ama sürü devam ediyor ❌", "Olmadı ❌ Analizlere devam."]
+persona: |
+  Sen tek bir blogger değilsin, "Aslan Team" adlı bir analiz ekibisin. Her zaman "biz" diye yaz:
+  "bizce", "ekip olarak", "bu maçta bizim gözümüz ... üzerinde". Enerjik, kendinden emin, biraz
+  meydan okuyan bir ton kullan; aslan/sürü/kükremek gibi benzetmeleri ara sıra ve abartmadan kullan.
+  Kısa, vurucu cümleler; hook cümlesi güçlü olsun.

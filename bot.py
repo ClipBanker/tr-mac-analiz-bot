@@ -730,6 +730,7 @@ def run(args):
     state.setdefault("totals", {"won": 0, "lost": 0})
     state.setdefault("pending", {})
     state.setdefault("posted_ids", [])
+    state.setdefault("used_ids", [])
     state.setdefault("nodata_ids", [])
     state.setdefault("express", {})
     state.setdefault("standings", {})
@@ -750,6 +751,22 @@ def run(args):
             state["express"].pop(d)
     state["posted_ids"] = state["posted_ids"][-300:]
     state["nodata_ids"] = state["nodata_ids"][-300:]
+    state["used_ids"] = state["used_ids"][-600:]
+
+    def claim(fid):
+        if fid not in state["used_ids"]:
+            state["used_ids"].append(fid)
+
+    # Матчи, которые уже взял другой канал (анонс, экспресс, прогнозы). Пересечений нет вообще.
+    other_ids = set()
+    for f in cfg.get("avoid_state_files") or ([cfg["avoid_state_file"]] if cfg.get("avoid_state_file") else []):
+        try:
+            o = json.loads((ROOT / f).read_text(encoding="utf-8"))
+            other_ids |= set(o.get("used_ids", [])) | set(o.get("posted_ids", []))
+            for ex in (o.get("express") or {}).values():
+                other_ids |= {l["id"] for l in ex.get("legs", [])}
+        except Exception:  # noqa: BLE001
+            pass
 
     def fixtures_for(date_str):
         if date_str not in fixtures_by_date:
@@ -846,11 +863,14 @@ def run(args):
 
     # 3. Утренний анонс с фото
     if not day["digest"] and cfg["digest_hour"] <= now.hour < cfg["digest_hour"] + 2:
-        upcoming = [fx for fx in fixtures_for(today) if parse_dt(fx["fixture"]["date"], tz) > now][: cfg.get("digest_size", 6)]
+        upcoming = [fx for fx in fixtures_for(today) if parse_dt(fx["fixture"]["date"], tz) > now
+                    and fx["fixture"]["id"] not in other_ids][: cfg.get("digest_size", 6)]
         upcoming.sort(key=lambda fx: fx["fixture"]["timestamp"])
         if upcoming and tg_send(post_digest(upcoming, cfg, tz, now.strftime("%d.%m")), dry,
                                 photo=random_photo(state, cfg) if use_images else None):
             day["digest"] = True
+            for fx in upcoming:
+                claim(fx["fixture"]["id"])
 
     # 4. Экспресс дня
     ex_hour = cfg.get("express_hour")
@@ -860,7 +880,7 @@ def run(args):
             if len(legs) >= cfg.get("express_size", 3):
                 break
             fid = fx["fixture"]["id"]
-            if fid in state["posted_ids"]:
+            if fid in state["posted_ids"] or fid in other_ids:
                 continue
             pred = api.prediction(fid)
             if not pred or not (pred.get("predictions") or {}).get("percent"):
@@ -885,6 +905,8 @@ def run(args):
             photo = express_card(legs, total, cfg, tz, now.strftime("%d.%m.%Y")) if use_images else None
             if tg_send(post_express(legs, total, intro, cfg, tz), dry, photo=photo):
                 state["express"][today] = {"legs": legs, "total": total}
+                for l in legs:
+                    claim(l["id"])
                 log(f"Экспресс дня: {len(legs)} события, кф {total}")
         else:
             state["express"][today] = {"legs": [], "done": True}
@@ -894,21 +916,9 @@ def run(args):
     last = state.get("last_post_at")
     since_h = (now - datetime.fromisoformat(last)).total_seconds() / 3600 if last else 999
     if args.force or (not quiet and since_h >= interval - 0.25):
-        other_ids = set()
-        if cfg.get("avoid_state_file"):  # не повторять матчи, которые уже разобрал другой канал
-            try:
-                other_ids = set(json.loads((ROOT / cfg["avoid_state_file"]).read_text(encoding="utf-8")).get("posted_ids", []))
-            except Exception:  # noqa: BLE001
-                pass
-        prio = [t.lower() for t in cfg.get("priority_teams", [])]
-
-        def is_prio(fx):
-            n = (fx["teams"]["home"]["name"] + " " + fx["teams"]["away"]["name"]).lower()
-            return any(t in n for t in prio)
-
         cands = [fx for fx in candidates(cfg["min_before_kickoff_min"], cfg.get("horizon_hours", 12))
                  if fx["fixture"]["id"] not in state["posted_ids"]
-                 and (fx["fixture"]["id"] not in other_ids or is_prio(fx))]
+                 and fx["fixture"]["id"] not in other_ids]
         posted = False
         for fx in cands[: cfg.get("max_tries_per_tick", 4)]:
             fid = fx["fixture"]["id"]
@@ -924,6 +934,7 @@ def run(args):
             photo = match_card(fx, pick, odd, cfg, tz) if use_images else None
             if tg_send(post_prediction(fx, pick, odd, cfg, tz), dry, photo=photo):
                 state["posted_ids"].append(fid)
+                claim(fid)
                 state["last_post_at"] = now.isoformat()
                 state["pending"][str(fid)] = {
                     "day": today, "kickoff": fx["fixture"]["date"], "market": pick["market"],

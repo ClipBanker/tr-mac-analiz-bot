@@ -3,7 +3,18 @@
     "won": 0,
     "lost": 0
   },
-  "pending": {},
+  "pending": {
+    "1528972": {
+      "day": "2026-11-14",
+      "kickoff": "2026-11-14T20:00:00+03:00",
+      "market": "BTTS",
+      "selection": "Yes",
+      "home": "Norway",
+      "away": "Wales",
+      "odd": 1.7,
+      "source": "gemini"
+    }
+  },
   "days": {
     "2026-11-14": {
       "selected": [],
@@ -15,7 +26,9 @@
       "loaded": true
     }
   },
-  "posted_ids": [],
+  "posted_ids": [
+    1528972
+  ],
   "nodata_ids": [],
   "fixtures": {
     "2026-11-14": [
@@ -3862,5 +3875,6 @@
         }
       }
     ]
-  }
+  },
+  "last_post_at": "2026-11-14T17:31:06.212400+03:00"
 }

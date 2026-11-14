@@ -13,10 +13,21 @@
       "away": "Denmark",
       "odd": 1.5,
       "source": "gemini"
+    },
+    "1644693": {
+      "day": "2026-11-14",
+      "kickoff": "2026-11-15T00:30:00+03:00",
+      "market": "BTTS",
+      "selection": "No",
+      "home": "Haiti",
+      "away": "USA",
+      "odd": 1.85,
+      "source": "gemini"
     }
   },
   "posted_ids": [
-    1528974
+    1528974,
+    1644693
   ],
   "nodata_ids": [],
   "express": {},
@@ -293,7 +304,8 @@
           "points": 1,
           "group": "League D - Group B"
         }
-      }
+      },
+      "536-2025": {}
     }
   },
   "fixtures": {
@@ -4630,5 +4642,8 @@
       "lost": 0
     }
   },
-  "last_post_at": "2026-11-14T18:25:42.479534+03:00"
+  "last_post_at": "2026-11-14T23:03:31.332154+03:00",
+  "used_ids": [
+    1644693
+  ]
 }

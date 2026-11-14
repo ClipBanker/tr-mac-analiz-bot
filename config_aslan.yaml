@@ -75,7 +75,7 @@ cta_lines:
 
 # Стиль канала (отличается от первого канала)
 photos_dir: photos_aslan
-avoid_state_file: state.json   # не брать матчи, которые уже разобрал первый канал (кроме матчей турецких команд)
+avoid_state_files: [state.json]   # матчи первого канала сюда не попадают ни в каком виде
 card_accent: [255, 120, 30]
 express_accent: [255, 70, 70]
 pick_label: "Tercihimiz"

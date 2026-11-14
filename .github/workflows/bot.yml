@@ -26,6 +26,9 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - name: Fonts
+        run: '[ -f /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf ] || (sudo apt-get update -qq && sudo apt-get install -y -qq fonts-dejavu-core)'
+
       - name: Run bot
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}

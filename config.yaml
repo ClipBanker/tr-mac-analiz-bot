@@ -35,11 +35,19 @@ priority_teams:
 max_predictions_per_day: 4
 
 # Расписание (часы по Стамбулу)
-digest_hour: 10           # утренний пост «Günün maçları»
-post_before_kickoff_min: 180   # прогноз выходит примерно за 3 часа до матча
+post_interval_hours: 3         # прогноз каждые 3 часа
+quiet_hours: [1, 9]            # с 01:00 до 09:00 не постим (уберите строку, чтобы постить круглосуточно)
+horizon_hours: 12              # берём матчи, которые начнутся в ближайшие 12 часов
 min_before_kickoff_min: 25     # ближе 25 минут к старту уже не постим
 results_check_after_min: 125   # через сколько минут после старта проверять счёт
+digest_hour: 10                # утренний анонс «Günün maçları» (выходит с 10 до 12)
+digest_size: 6                 # сколько матчей в анонсе
+max_tries_per_tick: 4          # сколько матчей проверить за запуск, если у первых нет статистики
 
+# Если в лигах выше матчей нет (например, пауза на сборные) — брать матчи
+# из других лиг. Страны в порядке приоритета.
+fallback_any_league: true
+fallback_countries: [World, Turkey, England, Spain, Italy, Germany, France, Portugal, Netherlands, Belgium, Brazil, Argentina, Saudi-Arabia, USA, Mexico, Greece, Scotland, Austria, Switzerland]
 
 # Нейросеть для текстов: gemini | anthropic | openai | none
 # none — бот пишет по шаблону на основе данных API-Football (бесплатно, но суше).

@@ -74,3 +74,5 @@ cta_lines:
   - "Bu yorumu beğendiyseniz kanalı arkadaşlarınızla paylaşın 🙌"
 
 avoid_state_files: [state_aslan.json]   # матчи Aslan Team сюда не попадают ни в каком виде
+
+footer: "✍️ Bana yazın 👉 @Emir_Kaya_bot"   # подпись в конце каждого поста

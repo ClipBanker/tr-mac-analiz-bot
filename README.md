@@ -1,0 +1,1 @@
+# tr-mac-analiz-bot

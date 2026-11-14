@@ -384,7 +384,7 @@ def post_digest(selected, cfg, tz, date_label):
         kt = parse_dt(fx["fixture"]["date"], tz).strftime("%H:%M")
         lines.append(f"🕗 {kt} | {esc(fx['teams']['home']['name'])} – {esc(fx['teams']['away']['name'])} "
                      f"<i>({esc(fx['league']['name'])})</i>")
-    lines += ["", "🔎 Her maçın analizi başlamadan yaklaşık 3 saat önce kanalda! 🔔",
+    lines += ["", "🔎 Analizler gün boyunca kanalda! 🔔",
               "", f"<i>{esc(cfg['disclaimer'])}</i>"]
     return "\n".join(lines)
 
@@ -426,19 +426,51 @@ def tg_send(text, dry):
 
 
 # ================================================================ выбор матчей
-def select_fixtures(fixtures, cfg):
+EXCLUDE_RE = re.compile(r"women|kadın|\bu1[5-9]\b|\bu2[0-3]\b|youth|reserve|\bii\b|amateur|futsal", re.I)
+
+
+def compact_fx(fx):
+    """Оставляем только нужные поля, чтобы state.json не разрастался."""
+    return {
+        "fixture": {"id": fx["fixture"]["id"], "date": fx["fixture"]["date"],
+                    "timestamp": fx["fixture"]["timestamp"], "status": {"short": fx["fixture"]["status"]["short"]}},
+        "league": {"id": fx["league"]["id"], "name": fx["league"]["name"],
+                   "country": fx["league"].get("country", ""), "round": fx["league"].get("round", "")},
+        "teams": {"home": {"name": fx["teams"]["home"]["name"]}, "away": {"name": fx["teams"]["away"]["name"]}},
+    }
+
+
+def rank_fixture(fx, cfg):
+    """Чем меньше число, тем интереснее матч. None — матч не берём."""
     order = {l["id"]: i for i, l in enumerate(cfg["leagues"])}
     prio_teams = [t.lower() for t in cfg.get("priority_teams", [])]
+    names = (fx["teams"]["home"]["name"] + " " + fx["teams"]["away"]["name"]).lower()
+    lid = fx["league"]["id"]
+    if lid in order:
+        base = order[lid]
+    elif cfg.get("fallback_any_league"):
+        if EXCLUDE_RE.search(fx["league"]["name"] + " " + names):
+            return None
+        countries = cfg.get("fallback_countries", [])
+        c = fx["league"].get("country", "")
+        base = 100 + (countries.index(c) if c in countries else 50)
+    else:
+        return None
+    if any(t in names for t in prio_teams):
+        base -= 1000
+    return base
+
+
+def filter_day_fixtures(fixtures, cfg, limit=80):
     pool = []
     for fx in fixtures:
-        lid = fx["league"]["id"]
-        if lid not in order or fx["fixture"]["status"]["short"] != "NS":
+        if fx["fixture"]["status"]["short"] != "NS":
             continue
-        names = (fx["teams"]["home"]["name"] + " " + fx["teams"]["away"]["name"]).lower()
-        bonus = -100 if any(t in names for t in prio_teams) else 0
-        pool.append((order[lid] + bonus, fx["fixture"]["timestamp"], fx))
+        r = rank_fixture(fx, cfg)
+        if r is not None:
+            pool.append((r, fx["fixture"]["timestamp"], compact_fx(fx)))
     pool.sort(key=lambda x: (x[0], x[1]))
-    return [p[2] for p in pool]
+    return [p[2] for p in pool[:limit]]
 
 
 # ================================================================ основной тик
@@ -448,6 +480,9 @@ def run(args):
     now = datetime.strptime(args.now, "%Y-%m-%d %H:%M").replace(tzinfo=tz) if args.now else datetime.now(tz)
     today = now.strftime("%Y-%m-%d")
     dry = args.dry_run
+    interval = float(cfg.get("post_interval_hours", 3))
+    q_from, q_to = (cfg.get("quiet_hours") or [None, None])
+    quiet = q_from is not None and (q_from <= now.hour < q_to if q_from < q_to else (now.hour >= q_from or now.hour < q_to))
 
     api = Football(os.environ.get("API_FOOTBALL_KEY", ""), mock=args.mock)
     if not args.mock and not api.key:
@@ -457,75 +492,43 @@ def run(args):
 
     state = load_state()
     state.setdefault("totals", {"won": 0, "lost": 0})
-    state.setdefault("pending", {})          # fixture_id -> pick, ждут результата
+    state.setdefault("pending", {})
+    state.setdefault("posted_ids", [])
+    state.setdefault("nodata_ids", [])
+    fixtures_by_date = state.setdefault("fixtures", {})
     days = state.setdefault("days", {})
-    day = days.setdefault(today, {"selected": [], "posted": [], "digest": False, "recap": False, "won": 0, "lost": 0})
-    # чистим старые дни (храним 7)
+    day = days.setdefault(today, {})
+    for k, v in {"digest": False, "recap": False, "won": 0, "lost": 0}.items():
+        day.setdefault(k, v)
     for d in sorted(days)[:-7]:
         days.pop(d, None)
+    for d in list(fixtures_by_date):
+        if d < (now - timedelta(days=1)).strftime("%Y-%m-%d"):
+            fixtures_by_date.pop(d)
+    state["posted_ids"] = state["posted_ids"][-300:]
+    state["nodata_ids"] = state["nodata_ids"][-300:]
 
-    # 1. Матчи дня (один запрос в день)
-    if not day["selected"] and not day.get("loaded"):
-        fixtures = api.fixtures_by_date(today, cfg["timezone"])
-        chosen = []
-        for fx in select_fixtures(fixtures, cfg):
-            if len(chosen) >= cfg["max_predictions_per_day"]:
-                break
-            pred = api.prediction(fx["fixture"]["id"])
-            if not pred or not (pred.get("predictions") or {}).get("percent"):
-                continue  # нет статистики — такой матч не берём
-            chosen.append({"id": fx["fixture"]["id"], "date": fx["fixture"]["date"], "fx": fx, "pred": pred})
-        chosen.sort(key=lambda c: c["fx"]["fixture"]["timestamp"])
-        day["selected"] = chosen
-        log(f"Выбрано матчей: {len(chosen)}")
-        day["loaded"] = True
+    def fixtures_for(date_str):
+        if date_str not in fixtures_by_date:
+            fixtures_by_date[date_str] = filter_day_fixtures(api.fixtures_by_date(date_str, cfg["timezone"]), cfg)
+            log(f"Загружены матчи на {date_str}: {len(fixtures_by_date[date_str])}")
+        return fixtures_by_date[date_str]
 
-    # 3. Прогнозы перед матчами
-    for s in day["selected"]:
-        fid = s["id"]
-        if fid in day["posted"]:
-            continue
-        ko = parse_dt(s["date"], tz)
-        mins = (ko - now).total_seconds() / 60
-        if mins < cfg["min_before_kickoff_min"]:
-            day["posted"].append(fid)  # опоздали — пропускаем
-            log(f"Пропущен {fid}: до старта {mins:.0f} мин")
-            continue
-        if mins > cfg["post_before_kickoff_min"]:
-            continue
-        fx = s["fx"]
-        pred = s.get("pred") or api.prediction(fid)
-        if not pred or not (pred.get("predictions") or {}).get("percent"):
-            day["posted"].append(fid)  # без статистики не постим, чтобы не выдумывать
-            log(f"Пропущен {fid}: нет данных для прогноза")
-            continue
-        odds = extract_odds(api.odds(fid))
-        pick = make_pick(fx, pred, odds, cfg)
-        odd = odds.get((pick["market"], pick["selection"]))
-        if tg_send(post_prediction(fx, pick, odd, cfg, tz), dry):
-            day["posted"].append(fid)
-            state["pending"][str(fid)] = {
-                "day": today, "kickoff": s["date"], "market": pick["market"], "selection": pick["selection"],
-                "home": fx["teams"]["home"]["name"], "away": fx["teams"]["away"]["name"], "odd": odd,
-                "source": pick["source"],
-            }
-
-    # 4. Результаты
+    # 1. Результаты прошедших прогнозов
     due = [fid for fid, p in state["pending"].items()
            if (now - parse_dt(p["kickoff"], tz)).total_seconds() / 60 >= cfg["results_check_after_min"]]
     if due:
         for fx in api.fixtures_by_ids(due):
             fid = str(fx["fixture"]["id"])
-            st = fx["fixture"]["status"]["short"]
             p = state["pending"].get(fid)
             if not p or fid not in due:
                 continue
+            st = fx["fixture"]["status"]["short"]
             if st in ("PST", "CANC", "ABD", "AWD", "WO"):
                 state["pending"].pop(fid)
                 continue
             if st not in ("FT", "AET", "PEN"):
                 continue
-            # для оценки берём счёт основного времени
             ft = fx.get("score", {}).get("fulltime", {})
             gh, ga = ft.get("home"), ft.get("away")
             if gh is None:
@@ -533,28 +536,74 @@ def run(args):
             won = evaluate(p["market"], p["selection"], gh, ga)
             if won is None:
                 continue
+            if quiet:
+                continue  # результат опубликуем утром
             if tg_send(post_result(p, gh, ga, won), dry):
                 key = "won" if won else "lost"
                 state["totals"][key] += 1
-                days.setdefault(p["day"], {"won": 0, "lost": 0}).setdefault(key, 0)
-                days[p["day"]][key] += 1
+                dd = days.setdefault(p["day"], {"won": 0, "lost": 0})
+                dd[key] = dd.get(key, 0) + 1
                 state["pending"].pop(fid)
 
-    # 5. Итог вчерашнего дня — утром, перед анонсом
+    # 2. Итог вчерашнего дня — утром
     yday = (now - timedelta(days=1)).strftime("%Y-%m-%d")
     yd = days.get(yday)
-    if yd and not yd.get("recap") and now.hour >= cfg["digest_hour"] - 1:
+    if yd and not yd.get("recap") and not quiet and now.hour >= cfg["digest_hour"] - 1:
         if not [p for p in state["pending"].values() if p["day"] == yday]:
             cfg["_totals"] = state["totals"]
             text = post_recap(yd, cfg)
             if text is None or tg_send(text, dry):
                 yd["recap"] = True
 
-    # 6. Утренний анонс
-    if not day["digest"] and now.hour >= cfg["digest_hour"] and day["selected"]:
-        upcoming = [s["fx"] for s in day["selected"] if parse_dt(s["date"], tz) > now]
+    # 3. Утренний анонс (только в утреннее окно, чтобы не выходил вечером)
+    if not day["digest"] and cfg["digest_hour"] <= now.hour < cfg["digest_hour"] + 2:
+        upcoming = [fx for fx in fixtures_for(today)
+                    if parse_dt(fx["fixture"]["date"], tz) > now][: cfg.get("digest_size", 6)]
+        upcoming.sort(key=lambda fx: fx["fixture"]["timestamp"])
         if upcoming and tg_send(post_digest(upcoming, cfg, tz, now.strftime("%d.%m")), dry):
             day["digest"] = True
+
+    # 4. Прогноз раз в N часов
+    last = state.get("last_post_at")
+    since_h = (now - datetime.fromisoformat(last)).total_seconds() / 3600 if last else 999
+    if args.force or (not quiet and since_h >= interval - 0.25):
+        horizon_end = now + timedelta(hours=cfg.get("horizon_hours", 12))
+        dates = sorted({today, horizon_end.strftime("%Y-%m-%d")})
+        cands = []
+        for d in dates:
+            for fx in fixtures_for(d):
+                fid = fx["fixture"]["id"]
+                ko = parse_dt(fx["fixture"]["date"], tz)
+                mins = (ko - now).total_seconds() / 60
+                if fid in state["posted_ids"] or fid in state["nodata_ids"]:
+                    continue
+                if cfg["min_before_kickoff_min"] <= mins and ko <= horizon_end:
+                    cands.append(fx)
+        cands.sort(key=lambda fx: (rank_fixture(fx, cfg), fx["fixture"]["timestamp"]))
+        posted = False
+        for fx in cands[: cfg.get("max_tries_per_tick", 4)]:
+            fid = fx["fixture"]["id"]
+            pred = api.prediction(fid)
+            if not pred or not (pred.get("predictions") or {}).get("percent"):
+                state["nodata_ids"].append(fid)
+                log(f"Пропущен {fid}: нет данных для прогноза")
+                continue
+            odds = extract_odds(api.odds(fid))
+            pick = make_pick(fx, pred, odds, cfg)
+            odd = odds.get((pick["market"], pick["selection"]))
+            if tg_send(post_prediction(fx, pick, odd, cfg, tz), dry):
+                state["posted_ids"].append(fid)
+                state["last_post_at"] = now.isoformat()
+                state["pending"][str(fid)] = {
+                    "day": today, "kickoff": fx["fixture"]["date"], "market": pick["market"],
+                    "selection": pick["selection"], "home": fx["teams"]["home"]["name"],
+                    "away": fx["teams"]["away"]["name"], "odd": odd, "source": pick["source"],
+                }
+                log(f"Опубликован прогноз {fid} ({pick['source']})")
+                posted = True
+            break
+        if not posted:
+            log("Подходящего матча для прогноза сейчас нет")
 
     save_state(state)
     log(f"Готово. Запросов к API-Football: {api.calls}")
@@ -564,5 +613,6 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="печатать посты вместо отправки")
     ap.add_argument("--mock", action="store_true", help="брать данные из папки mock/")
+    ap.add_argument("--force", action="store_true", help="опубликовать прогноз сейчас, не дожидаясь интервала")
     ap.add_argument("--now", help="подменить текущее время, формат 'YYYY-MM-DD HH:MM' (Стамбул)")
     run(ap.parse_args())

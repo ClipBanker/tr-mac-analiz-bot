@@ -3,8 +3,21 @@
     "won": 0,
     "lost": 0
   },
-  "pending": {},
-  "posted_ids": [],
+  "pending": {
+    "1528974": {
+      "day": "2026-11-14",
+      "kickoff": "2026-11-14T22:45:00+03:00",
+      "market": "OU25",
+      "selection": "Over",
+      "home": "Portugal",
+      "away": "Denmark",
+      "odd": 1.5,
+      "source": "gemini"
+    }
+  },
+  "posted_ids": [
+    1528974
+  ],
   "nodata_ids": [],
   "express": {},
   "standings": {
@@ -4616,5 +4629,6 @@
       "won": 0,
       "lost": 0
     }
-  }
+  },
+  "last_post_at": "2026-11-14T18:25:42.479534+03:00"
 }

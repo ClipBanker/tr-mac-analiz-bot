@@ -7,6 +7,7 @@ timezone: "Europe/Istanbul"
 # Бот берёт матчи сверху вниз, пока не наберёт max_predictions_per_day.
 leagues:
   - {id: 203, name: "Süper Lig"}
+  - {id: 5,   name: "UEFA Uluslar Ligi"}
   - {id: 2,   name: "Şampiyonlar Ligi"}
   - {id: 3,   name: "Avrupa Ligi"}
   - {id: 848, name: "Konferans Ligi"}
@@ -20,6 +21,8 @@ leagues:
 
 # Матчи с турецкими клубами в еврокубках поднимаются в приоритете.
 priority_teams:
+  - Türkiye
+  - Turkey
   - Galatasaray
   - Fenerbahçe
   - Fenerbahce

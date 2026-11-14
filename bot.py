@@ -633,7 +633,12 @@ def post_express_result(ex, results):
 _dry_n = [0]
 
 
+FOOTER = [""]  # подпись в конце каждого поста (config: footer)
+
+
 def tg_send(text, dry, photo=None):
+    if FOOTER[0]:
+        text = f"{text}\n\n{FOOTER[0]}"
     if dry:
         print("\n" + "=" * 60 + "\n" + text + "\n" + "=" * 60)
         if photo:
@@ -711,6 +716,7 @@ def filter_day_fixtures(fixtures, cfg, limit=80):
 # ================================================================ основной тик
 def run(args):
     cfg = load_config(args.config)
+    FOOTER[0] = (cfg.get("footer") or "").strip()
     tz = ZoneInfo(cfg["timezone"])
     now = datetime.strptime(args.now, "%Y-%m-%d %H:%M").replace(tzinfo=tz) if args.now else datetime.now(tz)
     today = now.strftime("%Y-%m-%d")
@@ -973,6 +979,7 @@ def run_live(args):
     import subprocess
     import time
     cfg = load_config(args.config)
+    FOOTER[0] = (cfg.get("footer") or "").strip()
     tz = ZoneInfo(cfg["timezone"])
     live_file = Path(os.environ.get("LIVE_STATE_FILE", ROOT / "state_live.json"))
     api = Football(os.environ.get("API_FOOTBALL_KEY", ""), mock=args.mock)

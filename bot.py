@@ -55,9 +55,20 @@ def log(*a):
 
 
 # ================================================================ утилиты
-def load_config():
-    with open(ROOT / "config.yaml", encoding="utf-8") as f:
+def load_config(path="config.yaml"):
+    with open(ROOT / path, encoding="utf-8") as f:
         return yaml.safe_load(f)
+
+
+def persona(cfg, base):
+    """Добавляет к системному промпту стиль конкретного канала из config (persona)."""
+    extra = (cfg.get("persona") or "").strip()
+    return base + ("\n\nKanalın tarzı (buna mutlaka uy):\n" + extra if extra else "")
+
+
+def rgb(cfg, key, default):
+    v = cfg.get(key)
+    return tuple(v) if isinstance(v, (list, tuple)) and len(v) == 3 else default
 
 
 def load_state():
@@ -379,7 +390,7 @@ def make_pick(fx, pred, odds, cfg, table=None, injuries=None):
         user = f"{summary}\nOranlar: {odds_txt}\nmin_odd={cfg['min_odd']} max_odd={cfg['max_odd']}"
         for attempt in range(3):
             try:
-                pick = parse_llm_json(llm_call(provider, cfg.get("llm_model") or "", key, LLM_SYSTEM, user))
+                pick = parse_llm_json(llm_call(provider, cfg.get("llm_model") or "", key, persona(cfg, LLM_SYSTEM), user))
                 pick["source"] = provider
                 return pick
             except Exception as e:  # noqa: BLE001
@@ -453,6 +464,7 @@ def _background(W, H, accent):
 
 
 def _center(d, text, y, font, fill, W):
+    text = "".join(ch for ch in str(text) if ord(ch) <= 0xFFFF).strip()  # эмодзи шрифт не рисует
     w = d.textlength(text, font=font)
     d.text(((W - w) / 2, y), text, font=font, fill=fill)
 
@@ -469,7 +481,7 @@ def match_card(fx, pick, odd, cfg, tz):
     """Карточка 1080x1080: лига, время, логотипы, прогноз, коэффициент."""
     from PIL import Image
     W = H = 1080
-    accent = (255, 196, 0)
+    accent = rgb(cfg, "card_accent", (255, 196, 0))
     img, d = _background(W, H, accent)
     league = fx["league"]["name"].upper()
     kt = parse_dt(fx["fixture"]["date"], tz).strftime("%d.%m  •  %H:%M")
@@ -490,7 +502,7 @@ def match_card(fx, pick, odd, cfg, tz):
         d.text((cx - d.textlength(name, font=f) / 2, 490), name, font=f, fill=(255, 255, 255))
     _center(d, "VS", 315, _font("bold", 64), accent, W)
     d.rounded_rectangle([110, 640, W - 110, 900], radius=36, fill=(22, 32, 56), outline=accent, width=4)
-    _center(d, "TAHMİNİM", 670, _font("bold", 34), (170, 185, 210), W)
+    _center(d, cfg.get("card_pick_label", "TAHMİNİM"), 670, _font("bold", 34), (170, 185, 210), W)
     label = MARKETS[pick["market"]][pick["selection"]]
     _center(d, label, 725, _fit(d, label, "bold", 96, W - 280), accent, W)
     if odd:
@@ -505,7 +517,7 @@ def match_card(fx, pick, odd, cfg, tz):
 
 def express_card(legs, total, cfg, tz, date_label):
     W, H = 1080, 1080
-    accent = (0, 220, 140)
+    accent = rgb(cfg, "express_accent", (0, 220, 140))
     img, d = _background(W, H, accent)
     _center(d, "GÜNÜN KUPONU", 70, _font("bold", 72), accent, W)
     _center(d, date_label, 160, _font("regular", 36), (150, 165, 190), W)
@@ -533,11 +545,12 @@ def express_card(legs, total, cfg, tz, date_label):
     return buf.getvalue()
 
 
-def random_photo(state):
+def random_photo(state, cfg):
     """Случайное фото из папки photos/ (не повторяя последнее)."""
-    if not PHOTOS_DIR.exists():
+    d = ROOT / cfg.get("photos_dir", "photos")
+    if not d.exists():
         return None
-    files = sorted(p for p in PHOTOS_DIR.iterdir() if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"))
+    files = sorted(p for p in d.iterdir() if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"))
     if not files:
         return None
     last = state.get("last_photo")
@@ -561,7 +574,7 @@ def post_prediction(fx, pick, odd, cfg, tz):
     cta = random.choice(cfg.get("cta_lines") or [""])
     return (f"{hook}⚽ {esc(home)} – {esc(away)}\n🏆 {esc(fx['league']['name'])} | 🕗 {kt}\n\n"
             f"{esc(pick['analysis'])}\n\n"
-            f"🎯 Benim tercihim: <b>{esc(label)}</b>{odd_txt}\n"
+            f"🎯 {esc(cfg.get('pick_label', 'Benim tercihim'))}: <b>{esc(label)}</b>{odd_txt}\n"
             f"📈 Güven: {stars(pick['confidence'])}\n\n"
             + (f"{esc(cta)}\n\n" if cta else "") + f"{esc(cfg['disclaimer'])}")
 
@@ -570,7 +583,7 @@ def post_digest(fixtures, cfg, tz, date_label):
     games = "\n".join(f"🕗 {parse_dt(fx['fixture']['date'], tz).strftime('%H:%M')} | "
                       f"{esc(fx['teams']['home']['name'])} – {esc(fx['teams']['away']['name'])}" for fx in fixtures)
     plain = "; ".join(f"{fx['teams']['home']['name']} - {fx['teams']['away']['name']}" for fx in fixtures)
-    intro = llm_text(cfg, BLOGGER_SHORT,
+    intro = llm_text(cfg, persona(cfg, BLOGGER_SHORT),
                      f"Takipçilerine günaydın de ve bugünün maç programını tanıt (2-3 cümle, en fazla 250 karakter). "
                      f"Bugünkü maçlar: {plain}. Gün boyunca analizlerin geleceğini söyle.",
                      random.choice(["Günaydın millet ☀️ Bugün program dolu, kahvemi aldım, analizler geliyor.",
@@ -578,13 +591,14 @@ def post_digest(fixtures, cfg, tz, date_label):
     return (f"{esc(intro)}\n\n📅 <b>Günün maçları — {date_label}</b>\n{games}\n\n{esc(cfg['disclaimer'])}")
 
 
-def post_result(p, gh, ga, won):
+def post_result(p, gh, ga, won, cfg=None):
+    cfg = cfg or {}
     label = MARKETS[p["market"]][p["selection"]]
     if won:
-        line = random.choice(["Tuttu! 🔥", "Bu da geldi ✅", "Dediğim gibi oldu 😎", "Cebimize koyduk ✅"])
+        line = random.choice(cfg.get("result_win") or ["Tuttu! 🔥", "Bu da geldi ✅", "Dediğim gibi oldu 😎", "Cebimize koyduk ✅"])
     else:
-        line = random.choice(["Bu sefer olmadı ❌", "Bu maç bizi üzdü ❌", "Futbol bu, olmadı ❌ Devam ediyoruz."])
-    return f"{line}\n<b>{esc(p['home'])} {gh}-{ga} {esc(p['away'])}</b>\nTercihim: {esc(label)}"
+        line = random.choice(cfg.get("result_loss") or ["Bu sefer olmadı ❌", "Bu maç bizi üzdü ❌", "Futbol bu, olmadı ❌ Devam ediyoruz."])
+    return f"{line}\n<b>{esc(p['home'])} {gh}-{ga} {esc(p['away'])}</b>\n{esc(cfg.get('pick_label', 'Tercihim'))}: {esc(label)}"
 
 
 def post_recap(day, totals):
@@ -696,7 +710,7 @@ def filter_day_fixtures(fixtures, cfg, limit=80):
 
 # ================================================================ основной тик
 def run(args):
-    cfg = load_config()
+    cfg = load_config(args.config)
     tz = ZoneInfo(cfg["timezone"])
     now = datetime.strptime(args.now, "%Y-%m-%d %H:%M").replace(tzinfo=tz) if args.now else datetime.now(tz)
     today = now.strftime("%Y-%m-%d")
@@ -800,7 +814,7 @@ def run(args):
         won = evaluate(p["market"], p["selection"], gh, ga)
         if won is None:
             continue
-        if tg_send(post_result(p, gh, ga, won), dry):
+        if tg_send(post_result(p, gh, ga, won, cfg), dry):
             key = "won" if won else "lost"
             state["totals"][key] += 1
             dd = days.setdefault(p["day"], {"won": 0, "lost": 0})
@@ -835,7 +849,7 @@ def run(args):
         upcoming = [fx for fx in fixtures_for(today) if parse_dt(fx["fixture"]["date"], tz) > now][: cfg.get("digest_size", 6)]
         upcoming.sort(key=lambda fx: fx["fixture"]["timestamp"])
         if upcoming and tg_send(post_digest(upcoming, cfg, tz, now.strftime("%d.%m")), dry,
-                                photo=random_photo(state) if use_images else None):
+                                photo=random_photo(state, cfg) if use_images else None):
             day["digest"] = True
 
     # 4. Экспресс дня
@@ -864,7 +878,7 @@ def run(args):
             for l in legs:
                 total = total * l["odd"] if l.get("odd") and total else None
             plain = "; ".join(f"{l['home']} - {l['away']}: {MARKETS[l['market']][l['selection']]}" for l in legs)
-            intro = llm_text(cfg, BLOGGER_SHORT,
+            intro = llm_text(cfg, persona(cfg, BLOGGER_SHORT),
                              f"Bugünün kuponunu takipçilerine kısa ve heyecanlı tanıt (1-2 cümle, en fazla 180 karakter). Kupon: {plain}",
                              random.choice(["Bugünün kuponunu hazırladım, bence gayet mantıklı bir kombinasyon 👇",
                                             "Günün kuponu geldi! Ben bu üçlüye güveniyorum 👇"]))
@@ -880,8 +894,21 @@ def run(args):
     last = state.get("last_post_at")
     since_h = (now - datetime.fromisoformat(last)).total_seconds() / 3600 if last else 999
     if args.force or (not quiet and since_h >= interval - 0.25):
+        other_ids = set()
+        if cfg.get("avoid_state_file"):  # не повторять матчи, которые уже разобрал другой канал
+            try:
+                other_ids = set(json.loads((ROOT / cfg["avoid_state_file"]).read_text(encoding="utf-8")).get("posted_ids", []))
+            except Exception:  # noqa: BLE001
+                pass
+        prio = [t.lower() for t in cfg.get("priority_teams", [])]
+
+        def is_prio(fx):
+            n = (fx["teams"]["home"]["name"] + " " + fx["teams"]["away"]["name"]).lower()
+            return any(t in n for t in prio)
+
         cands = [fx for fx in candidates(cfg["min_before_kickoff_min"], cfg.get("horizon_hours", 12))
-                 if fx["fixture"]["id"] not in state["posted_ids"]]
+                 if fx["fixture"]["id"] not in state["posted_ids"]
+                 and (fx["fixture"]["id"] not in other_ids or is_prio(fx))]
         posted = False
         for fx in cands[: cfg.get("max_tries_per_tick", 4)]:
             fid = fx["fixture"]["id"]
@@ -917,5 +944,6 @@ if __name__ == "__main__":
     ap.add_argument("--dry-run", action="store_true", help="печатать посты вместо отправки")
     ap.add_argument("--mock", action="store_true", help="брать данные из папки mock/")
     ap.add_argument("--force", action="store_true", help="опубликовать прогноз сейчас, не дожидаясь интервала")
+    ap.add_argument("--config", default="config.yaml", help="файл настроек канала")
     ap.add_argument("--now", help="подменить текущее время, формат 'YYYY-MM-DD HH:MM' (Стамбул)")
     run(ap.parse_args())

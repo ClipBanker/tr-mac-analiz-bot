@@ -72,3 +72,5 @@ cta_lines:
   - "Katılıyorsanız 🔥 bırakın, katılmıyorsanız 👎"
   - "Siz bu maçta neye oynuyorsunuz? 👇"
   - "Bu yorumu beğendiyseniz kanalı arkadaşlarınızla paylaşın 🙌"
+
+avoid_state_files: [state_aslan.json]   # матчи Aslan Team сюда не попадают ни в каком виде

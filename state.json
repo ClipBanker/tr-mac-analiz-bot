@@ -13,6 +13,16 @@
       "away": "Wales",
       "odd": 1.7,
       "source": "gemini"
+    },
+    "1528973": {
+      "day": "2026-11-14",
+      "kickoff": "2026-11-14T20:00:00+03:00",
+      "market": "OU25",
+      "selection": "Under",
+      "home": "Georgia",
+      "away": "Hungary",
+      "odd": 1.53,
+      "source": "gemini"
     }
   },
   "days": {
@@ -27,7 +37,8 @@
     }
   },
   "posted_ids": [
-    1528972
+    1528972,
+    1528973
   ],
   "nodata_ids": [],
   "fixtures": {
@@ -3876,5 +3887,7 @@
       }
     ]
   },
-  "last_post_at": "2026-11-14T17:31:06.212400+03:00"
+  "last_post_at": "2026-11-14T17:54:13.890466+03:00",
+  "express": {},
+  "standings": {}
 }

@@ -23,6 +23,16 @@
       "away": "Hungary",
       "odd": 1.53,
       "source": "gemini"
+    },
+    "1528975": {
+      "day": "2026-11-14",
+      "kickoff": "2026-11-14T22:45:00+03:00",
+      "market": "BTTS",
+      "selection": "No",
+      "home": "Northern Ireland",
+      "away": "Ukraine",
+      "odd": 1.62,
+      "source": "gemini"
     }
   },
   "days": {
@@ -38,7 +48,8 @@
   },
   "posted_ids": [
     1528972,
-    1528973
+    1528973,
+    1528975
   ],
   "nodata_ids": [],
   "fixtures": {
@@ -3887,7 +3898,10 @@
       }
     ]
   },
-  "last_post_at": "2026-11-14T17:54:13.890466+03:00",
+  "last_post_at": "2026-11-14T22:00:46.408877+03:00",
   "express": {},
-  "standings": {}
+  "standings": {},
+  "used_ids": [
+    1528975
+  ]
 }

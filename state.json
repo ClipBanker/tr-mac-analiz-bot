@@ -1,1 +1,18 @@
-{}
+{
+  "totals": {
+    "won": 0,
+    "lost": 0
+  },
+  "pending": {},
+  "days": {
+    "2026-11-14": {
+      "selected": [],
+      "posted": [],
+      "digest": false,
+      "recap": false,
+      "won": 0,
+      "lost": 0,
+      "loaded": true
+    }
+  }
+}

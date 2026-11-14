@@ -939,11 +939,132 @@ def run(args):
     log(f"Готово. Запросов к API-Football: {api.calls}")
 
 
+
+# ================================================================ лайв
+def pick_status(market, sel, gh, ga):
+    """Как сейчас выглядит прогноз при текущем счёте (текст для лайв-поста)."""
+    tot = gh + ga
+    if market == "OU25":
+        if sel == "Over":
+            return "✅ Tuttu bile!" if tot >= 3 else f"⏳ {3 - tot} gol daha lazım"
+        return "❌ Bu sefer olmadı" if tot >= 3 else "✅ Şimdilik yolunda"
+    if market == "BTTS":
+        both = gh > 0 and ga > 0
+        if sel == "Yes":
+            return "✅ Tuttu bile!" if both else "⏳ Diğer taraftan da bir gol lazım"
+        return "❌ Bu sefer olmadı" if both else "✅ Şimdilik yolunda"
+    res = "1" if gh > ga else "2" if ga > gh else "X"
+    ok = (sel == res) if market == "1X2" else (res in sel)
+    return "✅ Şimdilik lehimize" if ok else "⏳ Henüz değil, maç uzun"
+
+
+def run_live(args):
+    import subprocess
+    import time
+    cfg = load_config(args.config)
+    tz = ZoneInfo(cfg["timezone"])
+    live_file = Path(os.environ.get("LIVE_STATE_FILE", ROOT / "state_live.json"))
+    api = Football(os.environ.get("API_FOOTBALL_KEY", ""), mock=args.mock)
+    dry = args.dry_run
+    lstate = json.loads(live_file.read_text(encoding="utf-8")) if live_file.exists() else {}
+    lstate.setdefault("sent", [])
+    lstate["sent"] = lstate["sent"][-2000:]
+    sent = set(lstate["sent"])
+    started = time.time()
+    max_sec = float(cfg.get("live_max_minutes", 320)) * 60
+    poll = int(cfg.get("live_poll_seconds", 60))
+    last_pull = 0.0
+    watch = {}  # fid -> pick
+
+    def mark(key):
+        sent.add(key)
+        lstate["sent"].append(key)
+        live_file.write_text(json.dumps(lstate, ensure_ascii=False), encoding="utf-8")
+
+    def refresh_watch():
+        st = load_state()
+        now = datetime.now(tz)
+        items = [(fid, p) for fid, p in st.get("pending", {}).items()]
+        for d, ex in st.get("express", {}).items():
+            for leg in ex.get("legs", []):
+                items.append((str(leg["id"]), {**leg, "day": d}))
+        for fid, p in items:
+            mins = (parse_dt(p["kickoff"], tz) - now).total_seconds() / 60
+            if -150 <= mins <= 75 and f"{fid}:FT" not in sent:
+                watch.setdefault(fid, p)
+
+    while time.time() - started < max_sec:
+        if not args.mock and time.time() - last_pull > 600:
+            subprocess.run(["git", "pull", "--rebase", "--autostash", "-q"], cwd=ROOT, check=False)
+            last_pull = time.time()
+        refresh_watch()
+        now = datetime.now(tz)
+        active = [fid for fid, p in watch.items() if parse_dt(p["kickoff"], tz) <= now + timedelta(minutes=2)]
+        if not watch:
+            log("Лайв: матчей для ведения нет, выхожу")
+            break
+        if not active:
+            nxt = min(parse_dt(p["kickoff"], tz) for p in watch.values())
+            wait = max(30, (nxt - now).total_seconds() - 90)
+            log(f"Лайв: ближайший матч в {nxt:%H:%M}, жду {int(wait)} сек")
+            time.sleep(min(wait, 600))
+            continue
+        for fx in api.fixtures_by_ids(active):
+            fid = str(fx["fixture"]["id"])
+            p = watch.get(fid)
+            if not p:
+                continue
+            home, away = fx["teams"]["home"]["name"], fx["teams"]["away"]["name"]
+            st = fx["fixture"]["status"]["short"]
+            gh, ga = fx["goals"]["home"] or 0, fx["goals"]["away"] or 0
+            label = MARKETS[p["market"]][p["selection"]]
+            if st in ("1H", "2H", "HT", "ET", "P", "LIVE", "FT", "AET", "PEN") and f"{fid}:KO" not in sent:
+                if tg_send(f"🦁 <b>Başladı!</b> {esc(home)} – {esc(away)}\n"
+                           f"{esc(cfg.get('pick_label', 'Tercihimiz'))}: <b>{esc(label)}</b>. Takipteyiz 👀", dry):
+                    mark(f"{fid}:KO")
+            for ev in fx.get("events") or []:
+                t = ev.get("type")
+                minute = (ev.get("time") or {}).get("elapsed")
+                extra = (ev.get("time") or {}).get("extra")
+                mtxt = f"{minute}+{extra}'" if extra else f"{minute}'"
+                player = (ev.get("player") or {}).get("name") or ""
+                team = (ev.get("team") or {}).get("name") or ""
+                key = f"{fid}:{t}:{minute}:{extra}:{team}:{player}:{ev.get('detail')}"
+                if key in sent:
+                    continue
+                if t == "Goal" and ev.get("detail") != "Missed Penalty":
+                    kind = {"Own Goal": " (kendi kalesine)", "Penalty": " (penaltı)"}.get(ev.get("detail"), "")
+                    text = (f"⚽ <b>GOOOL!</b> {esc(team)} {mtxt}\n{esc(player)}{kind}\n\n"
+                            f"<b>{esc(home)} {gh}-{ga} {esc(away)}</b>\n"
+                            f"{esc(label)}: {pick_status(p['market'], p['selection'], gh, ga)}")
+                    if tg_send(text, dry):
+                        mark(key)
+                elif t == "Card" and ev.get("detail") == "Red Card":
+                    if tg_send(f"🟥 <b>Kırmızı kart!</b> {esc(player)} ({esc(team)}) {mtxt}\n"
+                               f"{esc(home)} {gh}-{ga} {esc(away)}", dry):
+                        mark(key)
+                else:
+                    mark(key)  # прочие события не публикуем, но запоминаем
+            if st == "HT" and f"{fid}:HT" not in sent:
+                if tg_send(f"⏸ <b>İlk yarı bitti</b>\n{esc(home)} {gh}-{ga} {esc(away)}\n"
+                           f"{esc(label)}: {pick_status(p['market'], p['selection'], gh, ga)}", dry):
+                    mark(f"{fid}:HT")
+            if st in ("FT", "AET", "PEN", "PST", "CANC", "ABD", "AWD", "WO"):
+                mark(f"{fid}:FT")  # итог публикует основной бот
+                watch.pop(fid, None)
+        if args.mock:
+            break
+        time.sleep(poll)
+    live_file.write_text(json.dumps(lstate, ensure_ascii=False), encoding="utf-8")
+    log(f"Лайв завершён. Запросов к API-Football: {api.calls}")
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="печатать посты вместо отправки")
     ap.add_argument("--mock", action="store_true", help="брать данные из папки mock/")
     ap.add_argument("--force", action="store_true", help="опубликовать прогноз сейчас, не дожидаясь интервала")
     ap.add_argument("--config", default="config.yaml", help="файл настроек канала")
+    ap.add_argument("--live", action="store_true", help="режим лайв: вести матчи с прогнозами канала")
     ap.add_argument("--now", help="подменить текущее время, формат 'YYYY-MM-DD HH:MM' (Стамбул)")
-    run(ap.parse_args())
+    a = ap.parse_args()
+    run_live(a) if a.live else run(a)

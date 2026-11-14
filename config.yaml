@@ -35,7 +35,7 @@ priority_teams:
 max_predictions_per_day: 4
 
 # Расписание (часы по Стамбулу)
-post_interval_hours: 3         # прогноз каждые 3 часа
+post_interval_hours: 2         # прогноз каждые 2 часа
 quiet_hours: [1, 9]            # с 01:00 до 09:00 не постим (уберите строку, чтобы постить круглосуточно)
 horizon_hours: 12              # берём матчи, которые начнутся в ближайшие 12 часов
 min_before_kickoff_min: 25     # ближе 25 минут к старту уже не постим
@@ -43,6 +43,13 @@ results_check_after_min: 125   # через сколько минут после
 digest_hour: 10                # утренний анонс «Günün maçları» (выходит с 10 до 12)
 digest_size: 6                 # сколько матчей в анонсе
 max_tries_per_tick: 4          # сколько матчей проверить за запуск, если у первых нет статистики
+express_hour: 12               # экспресс дня выходит с 12:00 (уберите строку, чтобы отключить)
+express_size: 3                # событий в экспрессе
+
+# Картинки и глубина разбора
+images: true                   # карточка матча к каждому прогнозу, фото из папки photos/ к утренним постам
+use_standings: true            # учитывать место в таблице
+use_injuries: true             # учитывать травмы и дисквалификации
 
 # Если в лигах выше матчей нет (например, пауза на сборные) — брать матчи
 # из других лиг. Страны в порядке приоритета.
@@ -52,7 +59,7 @@ fallback_countries: [World, Turkey, England, Spain, Italy, Germany, France, Port
 # Нейросеть для текстов: gemini | anthropic | openai | none
 # none — бот пишет по шаблону на основе данных API-Football (бесплатно, но суше).
 llm_provider: "gemini"
-llm_model: ""             # пусто = модель по умолчанию для провайдера
+llm_model: "gemini-pro-latest"   # если модель недоступна, бот сам перейдёт на gemini-flash-latest
 
 # Ограничения на коэффициенты для выбора прогноза
 min_odd: 1.40
@@ -60,3 +67,8 @@ max_odd: 2.60
 
 channel_name: "Maç Analiz"   # подпись в постах
 disclaimer: "🔞 18+"
+# Строка в конце прогноза (выбирается случайно). Пустой список — без неё.
+cta_lines:
+  - "Katılıyorsanız 🔥 bırakın, katılmıyorsanız 👎"
+  - "Siz bu maçta neye oynuyorsunuz? 👇"
+  - "Bu yorumu beğendiyseniz kanalı arkadaşlarınızla paylaşın 🙌"

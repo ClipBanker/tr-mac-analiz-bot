@@ -1,0 +1,51 @@
+# ================== Настройки бота-контентщика ==================
+# Всё, что можно менять без правки кода.
+
+timezone: "Europe/Istanbul"
+
+# Лиги в порядке приоритета (ID лиг API-Football).
+# Бот берёт матчи сверху вниз, пока не наберёт max_predictions_per_day.
+leagues:
+  - {id: 203, name: "Süper Lig"}
+  - {id: 2,   name: "Şampiyonlar Ligi"}
+  - {id: 3,   name: "Avrupa Ligi"}
+  - {id: 848, name: "Konferans Ligi"}
+  - {id: 206, name: "Türkiye Kupası"}
+  - {id: 39,  name: "Premier Lig"}
+  - {id: 140, name: "La Liga"}
+  - {id: 135, name: "Serie A"}
+  - {id: 78,  name: "Bundesliga"}
+  - {id: 61,  name: "Ligue 1"}
+  - {id: 204, name: "1. Lig"}
+
+# Матчи с турецкими клубами в еврокубках поднимаются в приоритете.
+priority_teams:
+  - Galatasaray
+  - Fenerbahçe
+  - Fenerbahce
+  - Beşiktaş
+  - Besiktas
+  - Trabzonspor
+  - Başakşehir
+  - Basaksehir
+
+max_predictions_per_day: 4
+
+# Расписание (часы по Стамбулу)
+digest_hour: 10           # утренний пост «Günün maçları»
+post_before_kickoff_min: 180   # прогноз выходит примерно за 3 часа до матча
+min_before_kickoff_min: 25     # ближе 25 минут к старту уже не постим
+results_check_after_min: 125   # через сколько минут после старта проверять счёт
+
+
+# Нейросеть для текстов: gemini | anthropic | openai | none
+# none — бот пишет по шаблону на основе данных API-Football (бесплатно, но суше).
+llm_provider: "gemini"
+llm_model: ""             # пусто = модель по умолчанию для провайдера
+
+# Ограничения на коэффициенты для выбора прогноза
+min_odd: 1.40
+max_odd: 2.60
+
+channel_name: "Maç Analiz"   # подпись в постах
+disclaimer: "🔞 18+"

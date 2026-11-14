@@ -44,6 +44,12 @@
       "won": 0,
       "lost": 0,
       "loaded": true
+    },
+    "2026-11-15": {
+      "digest": false,
+      "recap": false,
+      "won": 0,
+      "lost": 0
     }
   },
   "posted_ids": [

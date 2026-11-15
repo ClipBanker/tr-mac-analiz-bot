@@ -1,19 +1,9 @@
 {
   "totals": {
-    "won": 2,
+    "won": 3,
     "lost": 0
   },
   "pending": {
-    "1648272": {
-      "day": "2026-11-15",
-      "kickoff": "2026-11-15T17:00:00+03:00",
-      "market": "1X2",
-      "selection": "1",
-      "home": "Zenit",
-      "away": "Trabzonspor",
-      "odd": 1.55,
-      "source": "gemini"
-    },
     "1528982": {
       "day": "2026-11-15",
       "kickoff": "2026-11-15T22:45:00+03:00",
@@ -23,13 +13,24 @@
       "away": "Türkiye",
       "odd": 2.0,
       "source": "gemini"
+    },
+    "1644696": {
+      "day": "2026-11-15",
+      "kickoff": "2026-11-16T02:00:00+03:00",
+      "market": "OU25",
+      "selection": "Under",
+      "home": "Panama",
+      "away": "Curaçao",
+      "odd": 1.73,
+      "source": "gemini"
     }
   },
   "posted_ids": [
     1528974,
     1644693,
     1648272,
-    1528982
+    1528982,
+    1644696
   ],
   "nodata_ids": [],
   "express": {
@@ -43,7 +44,10 @@
           "kickoff": "2026-11-15T20:00:00+03:00",
           "market": "DC",
           "selection": "X2",
-          "odd": 1.22
+          "odd": 1.22,
+          "gh": 0,
+          "ga": 2,
+          "score": "0-2"
         },
         {
           "id": 1528981,
@@ -53,7 +57,10 @@
           "kickoff": "2026-11-15T20:00:00+03:00",
           "market": "DC",
           "selection": "1X",
-          "odd": null
+          "odd": null,
+          "gh": 7,
+          "ga": 2,
+          "score": "7-2"
         },
         {
           "id": 1528982,
@@ -618,7 +625,8 @@
           "points": 1,
           "group": "League D - Group B"
         }
-      }
+      },
+      "536-2025": {}
     }
   },
   "fixtures": {
@@ -7038,11 +7046,11 @@
     "2026-11-15": {
       "digest": true,
       "recap": false,
-      "won": 0,
+      "won": 1,
       "lost": 0
     }
   },
-  "last_post_at": "2026-11-15T17:56:07.398659+03:00",
+  "last_post_at": "2026-11-15T23:31:37.459815+03:00",
   "used_ids": [
     1644693,
     1648272,
@@ -7050,6 +7058,7 @@
     1545616,
     1528980,
     1528981,
-    1528982
+    1528982,
+    1644696
   ]
 }

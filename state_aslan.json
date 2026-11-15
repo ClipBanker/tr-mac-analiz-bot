@@ -1,33 +1,24 @@
 {
   "totals": {
-    "won": 0,
+    "won": 2,
     "lost": 0
   },
   "pending": {
-    "1528974": {
-      "day": "2026-11-14",
-      "kickoff": "2026-11-14T22:45:00+03:00",
-      "market": "OU25",
-      "selection": "Over",
-      "home": "Portugal",
-      "away": "Denmark",
-      "odd": 1.5,
-      "source": "gemini"
-    },
-    "1644693": {
-      "day": "2026-11-14",
-      "kickoff": "2026-11-15T00:30:00+03:00",
-      "market": "BTTS",
-      "selection": "No",
-      "home": "Haiti",
-      "away": "USA",
-      "odd": 1.85,
+    "1648272": {
+      "day": "2026-11-15",
+      "kickoff": "2026-11-15T17:00:00+03:00",
+      "market": "1X2",
+      "selection": "1",
+      "home": "Zenit",
+      "away": "Trabzonspor",
+      "odd": 1.55,
       "source": "gemini"
     }
   },
   "posted_ids": [
     1528974,
-    1644693
+    1644693,
+    1648272
   ],
   "nodata_ids": [],
   "express": {},
@@ -306,6 +297,9 @@
         }
       },
       "536-2025": {}
+    },
+    "2026-11-15": {
+      "667-2026": {}
     }
   },
   "fixtures": {
@@ -4637,19 +4631,25 @@
   "days": {
     "2026-11-14": {
       "digest": false,
-      "recap": false,
-      "won": 0,
+      "recap": true,
+      "won": 2,
       "lost": 0
     },
     "2026-11-15": {
-      "digest": false,
+      "digest": true,
       "recap": false,
       "won": 0,
       "lost": 0
     }
   },
-  "last_post_at": "2026-11-14T23:03:31.332154+03:00",
+  "last_post_at": "2026-11-15T10:05:04.591697+03:00",
   "used_ids": [
-    1644693
+    1644693,
+    1648272,
+    1528979,
+    1545616,
+    1528980,
+    1528981,
+    1528982
   ]
 }

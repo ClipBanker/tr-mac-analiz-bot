@@ -1,27 +1,17 @@
 {
   "totals": {
-    "won": 3,
-    "lost": 0
+    "won": 4,
+    "lost": 1
   },
   "pending": {
-    "1528982": {
-      "day": "2026-11-15",
-      "kickoff": "2026-11-15T22:45:00+03:00",
-      "market": "BTTS",
-      "selection": "No",
-      "home": "France",
-      "away": "Türkiye",
-      "odd": 2.0,
-      "source": "gemini"
-    },
-    "1644696": {
-      "day": "2026-11-15",
-      "kickoff": "2026-11-16T02:00:00+03:00",
-      "market": "OU25",
-      "selection": "Under",
-      "home": "Panama",
-      "away": "Curaçao",
-      "odd": 1.73,
+    "1528986": {
+      "day": "2026-11-16",
+      "kickoff": "2026-11-16T18:00:00+03:00",
+      "market": "1X2",
+      "selection": "2",
+      "home": "Kazakhstan",
+      "away": "Slovakia",
+      "odd": 1.91,
       "source": "gemini"
     }
   },
@@ -30,7 +20,8 @@
     1644693,
     1648272,
     1528982,
-    1644696
+    1644696,
+    1528986
   ],
   "nodata_ids": [],
   "express": {
@@ -70,10 +61,14 @@
           "kickoff": "2026-11-15T22:45:00+03:00",
           "market": "DC",
           "selection": "1X",
-          "odd": 1.04
+          "odd": 1.04,
+          "gh": 2,
+          "ga": 1,
+          "score": "2-1"
         }
       ],
-      "total": null
+      "total": null,
+      "done": true
     }
   },
   "standings": {
@@ -352,6 +347,280 @@
         }
       },
       "536-2025": {}
+    },
+    "2026-11-16": {
+      "5-2026": {
+        "France": {
+          "rank": 1,
+          "points": 13,
+          "group": "League A - Group A"
+        },
+        "Belgium": {
+          "rank": 2,
+          "points": 12,
+          "group": "League A - Group A"
+        },
+        "Italy": {
+          "rank": 3,
+          "points": 10,
+          "group": "League A - Group A"
+        },
+        "Türkiye": {
+          "rank": 4,
+          "points": 0,
+          "group": "League A - Group A"
+        },
+        "Netherlands": {
+          "rank": 1,
+          "points": 11,
+          "group": "League A - Group B"
+        },
+        "Greece": {
+          "rank": 2,
+          "points": 8,
+          "group": "League A - Group B"
+        },
+        "Germany": {
+          "rank": 3,
+          "points": 8,
+          "group": "League A - Group B"
+        },
+        "Serbia": {
+          "rank": 4,
+          "points": 0,
+          "group": "League A - Group B"
+        },
+        "England": {
+          "rank": 1,
+          "points": 15,
+          "group": "League A - Group C"
+        },
+        "Spain": {
+          "rank": 2,
+          "points": 15,
+          "group": "League A - Group C"
+        },
+        "Croatia": {
+          "rank": 3,
+          "points": 6,
+          "group": "League A - Group C"
+        },
+        "Czechia": {
+          "rank": 4,
+          "points": 0,
+          "group": "League A - Group C"
+        },
+        "Portugal": {
+          "rank": 1,
+          "points": 12,
+          "group": "League A - Group D"
+        },
+        "Denmark": {
+          "rank": 2,
+          "points": 9,
+          "group": "League A - Group D"
+        },
+        "Norway": {
+          "rank": 3,
+          "points": 6,
+          "group": "League A - Group D"
+        },
+        "Wales": {
+          "rank": 4,
+          "points": 3,
+          "group": "League A - Group D"
+        },
+        "Switzerland": {
+          "rank": 1,
+          "points": 13,
+          "group": "League B - Group A"
+        },
+        "Slovenia": {
+          "rank": 2,
+          "points": 8,
+          "group": "League B - Group A"
+        },
+        "Scotland": {
+          "rank": 3,
+          "points": 7,
+          "group": "League B - Group A"
+        },
+        "FYR Macedonia": {
+          "rank": 4,
+          "points": 0,
+          "group": "League B - Group A"
+        },
+        "Northern Ireland": {
+          "rank": 1,
+          "points": 11,
+          "group": "League B - Group B"
+        },
+        "Hungary": {
+          "rank": 2,
+          "points": 10,
+          "group": "League B - Group B"
+        },
+        "Ukraine": {
+          "rank": 3,
+          "points": 4,
+          "group": "League B - Group B"
+        },
+        "Georgia": {
+          "rank": 4,
+          "points": 2,
+          "group": "League B - Group B"
+        },
+        "Austria": {
+          "rank": 1,
+          "points": 11,
+          "group": "League B - Group C"
+        },
+        "Kosovo": {
+          "rank": 2,
+          "points": 6,
+          "group": "League B - Group C"
+        },
+        "Rep. Of Ireland": {
+          "rank": 3,
+          "points": 5,
+          "group": "League B - Group C"
+        },
+        "Israel": {
+          "rank": 4,
+          "points": 3,
+          "group": "League B - Group C"
+        },
+        "Sweden": {
+          "rank": 1,
+          "points": 13,
+          "group": "League B - Group D"
+        },
+        "Bosnia & Herzegovina": {
+          "rank": 2,
+          "points": 8,
+          "group": "League B - Group D"
+        },
+        "Poland": {
+          "rank": 3,
+          "points": 4,
+          "group": "League B - Group D"
+        },
+        "Romania": {
+          "rank": 4,
+          "points": 3,
+          "group": "League B - Group D"
+        },
+        "Albania": {
+          "rank": 1,
+          "points": 15,
+          "group": "League C - Group A"
+        },
+        "Belarus": {
+          "rank": 2,
+          "points": 10,
+          "group": "League C - Group A"
+        },
+        "Finland": {
+          "rank": 3,
+          "points": 10,
+          "group": "League C - Group A"
+        },
+        "San Marino": {
+          "rank": 4,
+          "points": 0,
+          "group": "League C - Group A"
+        },
+        "Montenegro": {
+          "rank": 1,
+          "points": 16,
+          "group": "League C - Group B"
+        },
+        "Cyprus": {
+          "rank": 2,
+          "points": 8,
+          "group": "League C - Group B"
+        },
+        "Armenia": {
+          "rank": 3,
+          "points": 6,
+          "group": "League C - Group B"
+        },
+        "Latvia": {
+          "rank": 4,
+          "points": 2,
+          "group": "League C - Group B"
+        },
+        "Slovakia": {
+          "rank": 1,
+          "points": 11,
+          "group": "League C - Group C"
+        },
+        "Moldova": {
+          "rank": 2,
+          "points": 7,
+          "group": "League C - Group C"
+        },
+        "Faroe Islands": {
+          "rank": 3,
+          "points": 5,
+          "group": "League C - Group C"
+        },
+        "Kazakhstan": {
+          "rank": 4,
+          "points": 2,
+          "group": "League C - Group C"
+        },
+        "Iceland": {
+          "rank": 1,
+          "points": 11,
+          "group": "League C - Group D"
+        },
+        "Estonia": {
+          "rank": 2,
+          "points": 9,
+          "group": "League C - Group D"
+        },
+        "Bulgaria": {
+          "rank": 3,
+          "points": 4,
+          "group": "League C - Group D"
+        },
+        "Luxembourg": {
+          "rank": 4,
+          "points": 3,
+          "group": "League C - Group D"
+        },
+        "Malta": {
+          "rank": 1,
+          "points": 7,
+          "group": "League D - Group A"
+        },
+        "Andorra": {
+          "rank": 2,
+          "points": 4,
+          "group": "League D - Group A"
+        },
+        "Gibraltar": {
+          "rank": 3,
+          "points": 2,
+          "group": "League D - Group A"
+        },
+        "Azerbaijan": {
+          "rank": 1,
+          "points": 8,
+          "group": "League D - Group B"
+        },
+        "Lithuania": {
+          "rank": 2,
+          "points": 4,
+          "group": "League D - Group B"
+        },
+        "Liechtenstein": {
+          "rank": 3,
+          "points": 1,
+          "group": "League D - Group B"
+        }
+      }
     }
   },
   "fixtures": {
@@ -4608,18 +4877,18 @@
     },
     "2026-11-15": {
       "digest": true,
-      "recap": false,
-      "won": 1,
-      "lost": 0
+      "recap": true,
+      "won": 2,
+      "lost": 1
     },
     "2026-11-16": {
-      "digest": false,
+      "digest": true,
       "recap": false,
       "won": 0,
       "lost": 0
     }
   },
-  "last_post_at": "2026-11-15T23:31:37.459815+03:00",
+  "last_post_at": "2026-11-16T10:11:08.784700+03:00",
   "used_ids": [
     1644693,
     1648272,
@@ -4628,6 +4897,12 @@
     1528980,
     1528981,
     1528982,
-    1644696
+    1644696,
+    1528986,
+    1528987,
+    1528988,
+    1528989,
+    1545617,
+    1528990
   ]
 }

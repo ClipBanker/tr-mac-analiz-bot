@@ -1,16 +1,16 @@
 {
   "totals": {
     "won": 4,
-    "lost": 2
+    "lost": 3
   },
   "pending": {
-    "1528990": {
-      "day": "2026-11-16",
-      "kickoff": "2026-11-16T22:45:00+03:00",
-      "market": "BTTS",
-      "selection": "Yes",
-      "home": "Germany",
-      "away": "Netherlands",
+    "1528992": {
+      "day": "2026-11-17",
+      "kickoff": "2026-11-17T22:45:00+03:00",
+      "market": "1X2",
+      "selection": "2",
+      "home": "Wales",
+      "away": "Portugal",
       "odd": 1.4,
       "source": "gemini"
     }
@@ -22,7 +22,8 @@
     1528982,
     1644696,
     1528986,
-    1528990
+    1528990,
+    1528992
   ],
   "nodata_ids": [],
   "express": {
@@ -338,6 +339,280 @@
         "Lithuania": {
           "rank": 2,
           "points": 4,
+          "group": "League D - Group B"
+        },
+        "Liechtenstein": {
+          "rank": 3,
+          "points": 1,
+          "group": "League D - Group B"
+        }
+      }
+    },
+    "2026-11-17": {
+      "5-2026": {
+        "France": {
+          "rank": 1,
+          "points": 13,
+          "group": "League A - Group A"
+        },
+        "Belgium": {
+          "rank": 2,
+          "points": 12,
+          "group": "League A - Group A"
+        },
+        "Italy": {
+          "rank": 3,
+          "points": 10,
+          "group": "League A - Group A"
+        },
+        "Türkiye": {
+          "rank": 4,
+          "points": 0,
+          "group": "League A - Group A"
+        },
+        "Germany": {
+          "rank": 1,
+          "points": 11,
+          "group": "League A - Group B"
+        },
+        "Netherlands": {
+          "rank": 2,
+          "points": 11,
+          "group": "League A - Group B"
+        },
+        "Greece": {
+          "rank": 3,
+          "points": 11,
+          "group": "League A - Group B"
+        },
+        "Serbia": {
+          "rank": 4,
+          "points": 0,
+          "group": "League A - Group B"
+        },
+        "England": {
+          "rank": 1,
+          "points": 15,
+          "group": "League A - Group C"
+        },
+        "Spain": {
+          "rank": 2,
+          "points": 15,
+          "group": "League A - Group C"
+        },
+        "Croatia": {
+          "rank": 3,
+          "points": 6,
+          "group": "League A - Group C"
+        },
+        "Czechia": {
+          "rank": 4,
+          "points": 0,
+          "group": "League A - Group C"
+        },
+        "Portugal": {
+          "rank": 1,
+          "points": 12,
+          "group": "League A - Group D"
+        },
+        "Denmark": {
+          "rank": 2,
+          "points": 9,
+          "group": "League A - Group D"
+        },
+        "Norway": {
+          "rank": 3,
+          "points": 6,
+          "group": "League A - Group D"
+        },
+        "Wales": {
+          "rank": 4,
+          "points": 3,
+          "group": "League A - Group D"
+        },
+        "Switzerland": {
+          "rank": 1,
+          "points": 16,
+          "group": "League B - Group A"
+        },
+        "Slovenia": {
+          "rank": 2,
+          "points": 11,
+          "group": "League B - Group A"
+        },
+        "Scotland": {
+          "rank": 3,
+          "points": 7,
+          "group": "League B - Group A"
+        },
+        "FYR Macedonia": {
+          "rank": 4,
+          "points": 0,
+          "group": "League B - Group A"
+        },
+        "Northern Ireland": {
+          "rank": 1,
+          "points": 11,
+          "group": "League B - Group B"
+        },
+        "Hungary": {
+          "rank": 2,
+          "points": 10,
+          "group": "League B - Group B"
+        },
+        "Ukraine": {
+          "rank": 3,
+          "points": 4,
+          "group": "League B - Group B"
+        },
+        "Georgia": {
+          "rank": 4,
+          "points": 2,
+          "group": "League B - Group B"
+        },
+        "Austria": {
+          "rank": 1,
+          "points": 11,
+          "group": "League B - Group C"
+        },
+        "Kosovo": {
+          "rank": 2,
+          "points": 6,
+          "group": "League B - Group C"
+        },
+        "Rep. Of Ireland": {
+          "rank": 3,
+          "points": 5,
+          "group": "League B - Group C"
+        },
+        "Israel": {
+          "rank": 4,
+          "points": 3,
+          "group": "League B - Group C"
+        },
+        "Sweden": {
+          "rank": 1,
+          "points": 13,
+          "group": "League B - Group D"
+        },
+        "Bosnia & Herzegovina": {
+          "rank": 2,
+          "points": 8,
+          "group": "League B - Group D"
+        },
+        "Poland": {
+          "rank": 3,
+          "points": 4,
+          "group": "League B - Group D"
+        },
+        "Romania": {
+          "rank": 4,
+          "points": 3,
+          "group": "League B - Group D"
+        },
+        "Albania": {
+          "rank": 1,
+          "points": 15,
+          "group": "League C - Group A"
+        },
+        "Belarus": {
+          "rank": 2,
+          "points": 10,
+          "group": "League C - Group A"
+        },
+        "Finland": {
+          "rank": 3,
+          "points": 10,
+          "group": "League C - Group A"
+        },
+        "San Marino": {
+          "rank": 4,
+          "points": 0,
+          "group": "League C - Group A"
+        },
+        "Montenegro": {
+          "rank": 1,
+          "points": 16,
+          "group": "League C - Group B"
+        },
+        "Cyprus": {
+          "rank": 2,
+          "points": 8,
+          "group": "League C - Group B"
+        },
+        "Armenia": {
+          "rank": 3,
+          "points": 6,
+          "group": "League C - Group B"
+        },
+        "Latvia": {
+          "rank": 4,
+          "points": 2,
+          "group": "League C - Group B"
+        },
+        "Slovakia": {
+          "rank": 1,
+          "points": 12,
+          "group": "League C - Group C"
+        },
+        "Faroe Islands": {
+          "rank": 2,
+          "points": 8,
+          "group": "League C - Group C"
+        },
+        "Moldova": {
+          "rank": 3,
+          "points": 7,
+          "group": "League C - Group C"
+        },
+        "Kazakhstan": {
+          "rank": 4,
+          "points": 3,
+          "group": "League C - Group C"
+        },
+        "Iceland": {
+          "rank": 1,
+          "points": 14,
+          "group": "League C - Group D"
+        },
+        "Estonia": {
+          "rank": 2,
+          "points": 12,
+          "group": "League C - Group D"
+        },
+        "Bulgaria": {
+          "rank": 3,
+          "points": 4,
+          "group": "League C - Group D"
+        },
+        "Luxembourg": {
+          "rank": 4,
+          "points": 3,
+          "group": "League C - Group D"
+        },
+        "Malta": {
+          "rank": 1,
+          "points": 8,
+          "group": "League D - Group A"
+        },
+        "Andorra": {
+          "rank": 2,
+          "points": 4,
+          "group": "League D - Group A"
+        },
+        "Gibraltar": {
+          "rank": 3,
+          "points": 3,
+          "group": "League D - Group A"
+        },
+        "Azerbaijan": {
+          "rank": 1,
+          "points": 8,
+          "group": "League D - Group B"
+        },
+        "Lithuania": {
+          "rank": 2,
+          "points": 7,
           "group": "League D - Group B"
         },
         "Liechtenstein": {
@@ -4591,6 +4866,2168 @@
           }
         }
       }
+    ],
+    "2026-11-18": [
+      {
+        "fixture": {
+          "id": 1640519,
+          "date": "2026-11-18T02:00:00+03:00",
+          "timestamp": 1794956400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 10,
+          "name": "Friendlies",
+          "season": 2026,
+          "country": "World",
+          "round": "Friendly International"
+        },
+        "teams": {
+          "home": {
+            "name": "Chile",
+            "logo": "https://media.api-sports.io/football/teams/2383.png"
+          },
+          "away": {
+            "name": "Colombia",
+            "logo": "https://media.api-sports.io/football/teams/8.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1647372,
+          "date": "2026-11-18T02:00:00+03:00",
+          "timestamp": 1794956400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 10,
+          "name": "Friendlies",
+          "season": 2026,
+          "country": "World",
+          "round": "Friendly International"
+        },
+        "teams": {
+          "home": {
+            "name": "Argentina",
+            "logo": "https://media.api-sports.io/football/teams/26.png"
+          },
+          "away": {
+            "name": "Costa Rica",
+            "logo": "https://media.api-sports.io/football/teams/29.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1647373,
+          "date": "2026-11-18T02:30:00+03:00",
+          "timestamp": 1794958200,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 10,
+          "name": "Friendlies",
+          "season": 2026,
+          "country": "World",
+          "round": "Friendly International"
+        },
+        "teams": {
+          "home": {
+            "name": "Ecuador",
+            "logo": "https://media.api-sports.io/football/teams/2382.png"
+          },
+          "away": {
+            "name": "Bolivia",
+            "logo": "https://media.api-sports.io/football/teams/2381.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1648287,
+          "date": "2026-11-18T02:30:00+03:00",
+          "timestamp": 1794958200,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 10,
+          "name": "Friendlies",
+          "season": 2026,
+          "country": "World",
+          "round": "Friendly International"
+        },
+        "teams": {
+          "home": {
+            "name": "Uruguay",
+            "logo": "https://media.api-sports.io/football/teams/7.png"
+          },
+          "away": {
+            "name": "Dominican Republic",
+            "logo": "https://media.api-sports.io/football/teams/5532.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1640011,
+          "date": "2026-11-18T03:00:00+03:00",
+          "timestamp": 1794960000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 536,
+          "name": "CONCACAF Nations League",
+          "season": 2025,
+          "country": "World",
+          "round": "League B - 4"
+        },
+        "teams": {
+          "home": {
+            "name": "French Guyana",
+            "logo": "https://media.api-sports.io/football/teams/8118.png"
+          },
+          "away": {
+            "name": "St. Vincent / Grenadines",
+            "logo": "https://media.api-sports.io/football/teams/5541.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1644697,
+          "date": "2026-11-18T03:00:00+03:00",
+          "timestamp": 1794960000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 536,
+          "name": "CONCACAF Nations League",
+          "season": 2025,
+          "country": "World",
+          "round": "Quarter-finals"
+        },
+        "teams": {
+          "home": {
+            "name": "USA",
+            "logo": "https://media.api-sports.io/football/teams/2384.png"
+          },
+          "away": {
+            "name": "Haiti",
+            "logo": "https://media.api-sports.io/football/teams/2386.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1649035,
+          "date": "2026-11-18T04:00:00+03:00",
+          "timestamp": 1794963600,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 536,
+          "name": "CONCACAF Nations League",
+          "season": 2025,
+          "country": "World",
+          "round": "Play-In Final"
+        },
+        "teams": {
+          "home": {
+            "name": "El Salvador",
+            "logo": "https://media.api-sports.io/football/teams/5159.png"
+          },
+          "away": {
+            "name": "Saint Martin",
+            "logo": "https://media.api-sports.io/football/teams/10984.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1644695,
+          "date": "2026-11-18T05:30:00+03:00",
+          "timestamp": 1794969000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 536,
+          "name": "CONCACAF Nations League",
+          "season": 2025,
+          "country": "World",
+          "round": "Quarter-finals"
+        },
+        "teams": {
+          "home": {
+            "name": "Mexico",
+            "logo": "https://media.api-sports.io/football/teams/16.png"
+          },
+          "away": {
+            "name": "Jamaica",
+            "logo": "https://media.api-sports.io/football/teams/2385.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1649036,
+          "date": "2026-11-18T06:00:00+03:00",
+          "timestamp": 1794970800,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 536,
+          "name": "CONCACAF Nations League",
+          "season": 2025,
+          "country": "World",
+          "round": "Play-In Final"
+        },
+        "teams": {
+          "home": {
+            "name": "Nicaragua",
+            "logo": "https://media.api-sports.io/football/teams/5164.png"
+          },
+          "away": {
+            "name": "Montserrat",
+            "logo": "https://media.api-sports.io/football/teams/8170.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1554065,
+          "date": "2026-11-18T14:00:00+03:00",
+          "timestamp": 1794999600,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 1129,
+          "name": "ASEAN Club Championship",
+          "season": 2026,
+          "country": "World",
+          "round": "Group Stage"
+        },
+        "teams": {
+          "home": {
+            "name": "Ho Chi Minh",
+            "logo": "https://media.api-sports.io/football/teams/3672.png"
+          },
+          "away": {
+            "name": "Buriram United",
+            "logo": "https://media.api-sports.io/football/teams/2780.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1551234,
+          "date": "2026-11-18T14:30:00+03:00",
+          "timestamp": 1795001400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 1129,
+          "name": "ASEAN Club Championship",
+          "season": 2026,
+          "country": "World",
+          "round": "Group Stage"
+        },
+        "teams": {
+          "home": {
+            "name": "Tampines Rovers",
+            "logo": "https://media.api-sports.io/football/teams/4206.png"
+          },
+          "away": {
+            "name": "Ratchaburi",
+            "logo": "https://media.api-sports.io/football/teams/2776.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1639359,
+          "date": "2026-11-18T15:00:00+03:00",
+          "timestamp": 1795003200,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 1129,
+          "name": "ASEAN Club Championship",
+          "season": 2026,
+          "country": "World",
+          "round": "Group Stage"
+        },
+        "teams": {
+          "home": {
+            "name": "Pusamania Borneo",
+            "logo": "https://media.api-sports.io/football/teams/2442.png"
+          },
+          "away": {
+            "name": "Manila Digger",
+            "logo": "https://media.api-sports.io/football/teams/21576.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591386,
+          "date": "2026-11-18T13:00:00+03:00",
+          "timestamp": 1794996000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig White Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "Adana Demirspor",
+            "logo": "https://media.api-sports.io/football/teams/3563.png"
+          },
+          "away": {
+            "name": "Kastamonuspor",
+            "logo": "https://media.api-sports.io/football/teams/3594.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591389,
+          "date": "2026-11-18T13:00:00+03:00",
+          "timestamp": 1794996000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig White Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "Çorluspor 1947",
+            "logo": "https://media.api-sports.io/football/teams/22451.png"
+          },
+          "away": {
+            "name": "Muş Sport Klübü",
+            "logo": "https://media.api-sports.io/football/teams/6536.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591390,
+          "date": "2026-11-18T13:00:00+03:00",
+          "timestamp": 1794996000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig White Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "Elazığspor",
+            "logo": "https://media.api-sports.io/football/teams/3571.png"
+          },
+          "away": {
+            "name": "Menemen FK",
+            "logo": "https://media.api-sports.io/football/teams/3599.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591391,
+          "date": "2026-11-18T13:00:00+03:00",
+          "timestamp": 1794996000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig White Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "Güzide Gebzespor",
+            "logo": "https://media.api-sports.io/football/teams/6511.png"
+          },
+          "away": {
+            "name": "Ankaraspor",
+            "logo": "https://media.api-sports.io/football/teams/780.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591392,
+          "date": "2026-11-18T13:00:00+03:00",
+          "timestamp": 1794996000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig White Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "Hatayspor",
+            "logo": "https://media.api-sports.io/football/teams/3575.png"
+          },
+          "away": {
+            "name": "İnegöl Kafkas Gençlik",
+            "logo": "https://media.api-sports.io/football/teams/21996.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591393,
+          "date": "2026-11-18T13:00:00+03:00",
+          "timestamp": 1794996000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig White Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "Isparta 32 Spor",
+            "logo": "https://media.api-sports.io/football/teams/6523.png"
+          },
+          "away": {
+            "name": "Somaspor",
+            "logo": "https://media.api-sports.io/football/teams/6538.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591681,
+          "date": "2026-11-18T13:00:00+03:00",
+          "timestamp": 1794996000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig Red Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "12 Bingölspor",
+            "logo": "https://media.api-sports.io/football/teams/6504.png"
+          },
+          "away": {
+            "name": "Sakaryaspor",
+            "logo": "https://media.api-sports.io/football/teams/3602.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591682,
+          "date": "2026-11-18T13:00:00+03:00",
+          "timestamp": 1794996000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig Red Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "Ankara Demirspor",
+            "logo": "https://media.api-sports.io/football/teams/3581.png"
+          },
+          "away": {
+            "name": "Yeni Orduspor",
+            "logo": "https://media.api-sports.io/football/teams/7426.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591687,
+          "date": "2026-11-18T13:00:00+03:00",
+          "timestamp": 1794996000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig Red Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "Serik Spor",
+            "logo": "https://media.api-sports.io/football/teams/7421.png"
+          },
+          "away": {
+            "name": "24 Erzincanspor",
+            "logo": "https://media.api-sports.io/football/teams/7392.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591688,
+          "date": "2026-11-18T13:00:00+03:00",
+          "timestamp": 1794996000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig Red Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "1461 Trabzon FK",
+            "logo": "https://media.api-sports.io/football/teams/6340.png"
+          },
+          "away": {
+            "name": " Kahramanmaraş İstiklal Spor",
+            "logo": "https://media.api-sports.io/football/teams/24601.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591388,
+          "date": "2026-11-18T14:00:00+03:00",
+          "timestamp": 1794999600,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig White Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "Arnavutköy Belediyespor",
+            "logo": "https://media.api-sports.io/football/teams/15101.png"
+          },
+          "away": {
+            "name": "68 Aksaray Belediyespor",
+            "logo": "https://media.api-sports.io/football/teams/6507.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591683,
+          "date": "2026-11-18T14:00:00+03:00",
+          "timestamp": 1794999600,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig Red Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "Ankaragücü",
+            "logo": "https://media.api-sports.io/football/teams/1010.png"
+          },
+          "away": {
+            "name": "Kırklarelispor",
+            "logo": "https://media.api-sports.io/football/teams/3596.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591685,
+          "date": "2026-11-18T15:00:00+03:00",
+          "timestamp": 1795003200,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig Red Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "İnegölspor",
+            "logo": "https://media.api-sports.io/football/teams/3612.png"
+          },
+          "away": {
+            "name": "İskenderunspor",
+            "logo": "https://media.api-sports.io/football/teams/7403.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591387,
+          "date": "2026-11-18T15:30:00+03:00",
+          "timestamp": 1795005000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig White Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "Aliağa FAŞ",
+            "logo": "https://media.api-sports.io/football/teams/21993.png"
+          },
+          "away": {
+            "name": "Sebat Gençlikspor",
+            "logo": "https://media.api-sports.io/football/teams/22010.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591394,
+          "date": "2026-11-18T15:30:00+03:00",
+          "timestamp": 1795005000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig White Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "Şanlıurfaspor",
+            "logo": "https://media.api-sports.io/football/teams/3613.png"
+          },
+          "away": {
+            "name": "Erbaaspor",
+            "logo": "https://media.api-sports.io/football/teams/7401.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591684,
+          "date": "2026-11-18T15:30:00+03:00",
+          "timestamp": 1795005000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig Red Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "Fethiyespor",
+            "logo": "https://media.api-sports.io/football/teams/3590.png"
+          },
+          "away": {
+            "name": "Kütahyaspor",
+            "logo": "https://media.api-sports.io/football/teams/11092.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1591686,
+          "date": "2026-11-18T15:30:00+03:00",
+          "timestamp": 1795005000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 205,
+          "name": "2. Lig",
+          "season": 2026,
+          "country": "Turkey",
+          "round": "2. Lig Red Group - 12"
+        },
+        "teams": {
+          "home": {
+            "name": "Karacabey Belediyespor",
+            "logo": "https://media.api-sports.io/football/teams/7407.png"
+          },
+          "away": {
+            "name": "Beyoğlu Yeni Çarşı",
+            "logo": "https://media.api-sports.io/football/teams/7406.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1612679,
+          "date": "2026-11-18T22:00:00+03:00",
+          "timestamp": 1795028400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 697,
+          "name": "WSL Cup",
+          "season": 2026,
+          "country": "England",
+          "round": "Group Stage"
+        },
+        "teams": {
+          "home": {
+            "name": "London City Lionesses W",
+            "logo": "https://media.api-sports.io/football/teams/15406.png"
+          },
+          "away": {
+            "name": "Brighton W",
+            "logo": "https://media.api-sports.io/football/teams/1857.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1612680,
+          "date": "2026-11-18T22:00:00+03:00",
+          "timestamp": 1795028400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 697,
+          "name": "WSL Cup",
+          "season": 2026,
+          "country": "England",
+          "round": "Group Stage"
+        },
+        "teams": {
+          "home": {
+            "name": "Manchester United W",
+            "logo": "https://media.api-sports.io/football/teams/4898.png"
+          },
+          "away": {
+            "name": "Everton W",
+            "logo": "https://media.api-sports.io/football/teams/1855.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1612681,
+          "date": "2026-11-18T22:00:00+03:00",
+          "timestamp": 1795028400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 697,
+          "name": "WSL Cup",
+          "season": 2026,
+          "country": "England",
+          "round": "Group Stage"
+        },
+        "teams": {
+          "home": {
+            "name": "Nottingham Forest W",
+            "logo": "https://media.api-sports.io/football/teams/15450.png"
+          },
+          "away": {
+            "name": "Liverpool W",
+            "logo": "https://media.api-sports.io/football/teams/1847.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1612682,
+          "date": "2026-11-18T22:00:00+03:00",
+          "timestamp": 1795028400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 697,
+          "name": "WSL Cup",
+          "season": 2026,
+          "country": "England",
+          "round": "Group Stage"
+        },
+        "teams": {
+          "home": {
+            "name": "Tottenham Hotspur W",
+            "logo": "https://media.api-sports.io/football/teams/4899.png"
+          },
+          "away": {
+            "name": "Leicester City FC W",
+            "logo": "https://media.api-sports.io/football/teams/15404.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1612683,
+          "date": "2026-11-18T22:00:00+03:00",
+          "timestamp": 1795028400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 697,
+          "name": "WSL Cup",
+          "season": 2026,
+          "country": "England",
+          "round": "Group Stage"
+        },
+        "teams": {
+          "home": {
+            "name": "West Ham W",
+            "logo": "https://media.api-sports.io/football/teams/1856.png"
+          },
+          "away": {
+            "name": "Wolverhampton W",
+            "logo": "https://media.api-sports.io/football/teams/15433.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1597403,
+          "date": "2026-11-18T22:45:00+03:00",
+          "timestamp": 1795031100,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 60,
+          "name": "Non League Premier - Southern South",
+          "season": 2026,
+          "country": "England",
+          "round": "Regular Season - 13"
+        },
+        "teams": {
+          "home": {
+            "name": "Gosport Borough",
+            "logo": "https://media.api-sports.io/football/teams/7717.png"
+          },
+          "away": {
+            "name": "Chertsey Town",
+            "logo": "https://media.api-sports.io/football/teams/7627.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1597419,
+          "date": "2026-11-18T22:45:00+03:00",
+          "timestamp": 1795031100,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 60,
+          "name": "Non League Premier - Southern South",
+          "season": 2026,
+          "country": "England",
+          "round": "Regular Season - 14"
+        },
+        "teams": {
+          "home": {
+            "name": "Frome Town",
+            "logo": "https://media.api-sports.io/football/teams/7226.png"
+          },
+          "away": {
+            "name": "Gloucester City",
+            "logo": "https://media.api-sports.io/football/teams/8653.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1615817,
+          "date": "2026-11-18T18:30:00+03:00",
+          "timestamp": 1795015800,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 449,
+          "name": "Tercera División RFEF - Group 11",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Group 11 - 7"
+        },
+        "teams": {
+          "home": {
+            "name": "Binissalem",
+            "logo": "https://media.api-sports.io/football/teams/9774.png"
+          },
+          "away": {
+            "name": "Formentera",
+            "logo": "https://media.api-sports.io/football/teams/9780.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1615822,
+          "date": "2026-11-18T19:00:00+03:00",
+          "timestamp": 1795017600,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 449,
+          "name": "Tercera División RFEF - Group 11",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Group 11 - 7"
+        },
+        "teams": {
+          "home": {
+            "name": "PE Sant Jordi",
+            "logo": "https://media.api-sports.io/football/teams/15313.png"
+          },
+          "away": {
+            "name": "Santanyí",
+            "logo": "https://media.api-sports.io/football/teams/9789.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1614291,
+          "date": "2026-11-18T20:00:00+03:00",
+          "timestamp": 1795021200,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 444,
+          "name": "Tercera División RFEF - Group 6",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Group 6 - 7"
+        },
+        "teams": {
+          "home": {
+            "name": "Roda",
+            "logo": "https://media.api-sports.io/football/teams/9684.png"
+          },
+          "away": {
+            "name": "Torrellano",
+            "logo": "https://media.api-sports.io/football/teams/17559.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1614884,
+          "date": "2026-11-18T20:00:00+03:00",
+          "timestamp": 1795021200,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 446,
+          "name": "Tercera División RFEF - Group 8",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Group 8 - 5"
+        },
+        "teams": {
+          "home": {
+            "name": "Atlético Mansillés",
+            "logo": "https://media.api-sports.io/football/teams/17502.png"
+          },
+          "away": {
+            "name": "Guijuelo",
+            "logo": "https://media.api-sports.io/football/teams/9388.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1616434,
+          "date": "2026-11-18T20:00:00+03:00",
+          "timestamp": 1795021200,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 451,
+          "name": "Tercera División RFEF - Group 13",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Group 13 - 7"
+        },
+        "teams": {
+          "home": {
+            "name": "Mazarrón FC",
+            "logo": "https://media.api-sports.io/football/teams/9816.png"
+          },
+          "away": {
+            "name": "Los Garres",
+            "logo": "https://media.api-sports.io/football/teams/9814.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1647646,
+          "date": "2026-11-18T20:00:00+03:00",
+          "timestamp": 1795021200,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 1248,
+          "name": "Copa de la Reina",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Round of 16"
+        },
+        "teams": {
+          "home": {
+            "name": "Levante W",
+            "logo": "https://media.api-sports.io/football/teams/1911.png"
+          },
+          "away": {
+            "name": "Eibar W",
+            "logo": "https://media.api-sports.io/football/teams/15225.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1614294,
+          "date": "2026-11-18T21:00:00+03:00",
+          "timestamp": 1795024800,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 444,
+          "name": "Tercera División RFEF - Group 6",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Group 6 - 7"
+        },
+        "teams": {
+          "home": {
+            "name": "Vall de Uxó",
+            "logo": "https://media.api-sports.io/football/teams/24779.png"
+          },
+          "away": {
+            "name": "Torrent",
+            "logo": "https://media.api-sports.io/football/teams/15348.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1616431,
+          "date": "2026-11-18T21:00:00+03:00",
+          "timestamp": 1795024800,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 451,
+          "name": "Tercera División RFEF - Group 13",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Group 13 - 7"
+        },
+        "teams": {
+          "home": {
+            "name": "Bala Azul",
+            "logo": "https://media.api-sports.io/football/teams/17607.png"
+          },
+          "away": {
+            "name": "Santa Cruz",
+            "logo": "https://media.api-sports.io/football/teams/26850.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1644369,
+          "date": "2026-11-18T21:00:00+03:00",
+          "timestamp": 1795024800,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 143,
+          "name": "Copa del Rey",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Round of 128"
+        },
+        "teams": {
+          "home": {
+            "name": "Portugalete",
+            "logo": "https://media.api-sports.io/football/teams/9408.png"
+          },
+          "away": {
+            "name": "Real Unión",
+            "logo": "https://media.api-sports.io/football/teams/9586.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1644384,
+          "date": "2026-11-18T21:00:00+03:00",
+          "timestamp": 1795024800,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 143,
+          "name": "Copa del Rey",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Round of 128"
+        },
+        "teams": {
+          "home": {
+            "name": "Utebo",
+            "logo": "https://media.api-sports.io/football/teams/9891.png"
+          },
+          "away": {
+            "name": "Sabadell",
+            "logo": "https://media.api-sports.io/football/teams/9593.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1647649,
+          "date": "2026-11-18T21:00:00+03:00",
+          "timestamp": 1795024800,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 1248,
+          "name": "Copa de la Reina",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Round of 16"
+        },
+        "teams": {
+          "home": {
+            "name": "Cacereno W",
+            "logo": "https://media.api-sports.io/football/teams/28498.png"
+          },
+          "away": {
+            "name": "Deportivo Alavés W",
+            "logo": "https://media.api-sports.io/football/teams/17168.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1614292,
+          "date": "2026-11-18T21:30:00+03:00",
+          "timestamp": 1795026600,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 444,
+          "name": "Tercera División RFEF - Group 6",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Group 6 - 7"
+        },
+        "teams": {
+          "home": {
+            "name": "Saguntino",
+            "logo": "https://media.api-sports.io/football/teams/9699.png"
+          },
+          "away": {
+            "name": "Jove Español",
+            "logo": "https://media.api-sports.io/football/teams/9694.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1614293,
+          "date": "2026-11-18T21:30:00+03:00",
+          "timestamp": 1795026600,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 444,
+          "name": "Tercera División RFEF - Group 6",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Group 6 - 7"
+        },
+        "teams": {
+          "home": {
+            "name": "Soneja",
+            "logo": "https://media.api-sports.io/football/teams/22140.png"
+          },
+          "away": {
+            "name": "Atzeneta",
+            "logo": "https://media.api-sports.io/football/teams/9688.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1572123,
+          "date": "2026-11-18T22:00:00+03:00",
+          "timestamp": 1795028400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 875,
+          "name": "Segunda División RFEF - Group 1",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Group 1 - 11"
+        },
+        "teams": {
+          "home": {
+            "name": "Bergantiños",
+            "logo": "https://media.api-sports.io/football/teams/9383.png"
+          },
+          "away": {
+            "name": "Sestao River",
+            "logo": "https://media.api-sports.io/football/teams/9413.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1616435,
+          "date": "2026-11-18T22:00:00+03:00",
+          "timestamp": 1795028400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 451,
+          "name": "Tercera División RFEF - Group 13",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Group 13 - 7"
+        },
+        "teams": {
+          "home": {
+            "name": "Olímpico Totana",
+            "logo": "https://media.api-sports.io/football/teams/9818.png"
+          },
+          "away": {
+            "name": "Algar",
+            "logo": "https://media.api-sports.io/football/teams/20438.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1616436,
+          "date": "2026-11-18T22:00:00+03:00",
+          "timestamp": 1795028400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 451,
+          "name": "Tercera División RFEF - Group 13",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Group 13 - 7"
+        },
+        "teams": {
+          "home": {
+            "name": "Atlético Pulpileño",
+            "logo": "https://media.api-sports.io/football/teams/9808.png"
+          },
+          "away": {
+            "name": "Balsicas Atlético",
+            "logo": "https://media.api-sports.io/football/teams/22180.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1644334,
+          "date": "2026-11-18T22:00:00+03:00",
+          "timestamp": 1795028400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 143,
+          "name": "Copa del Rey",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Round of 128"
+        },
+        "teams": {
+          "home": {
+            "name": "Alcoyano",
+            "logo": "https://media.api-sports.io/football/teams/9686.png"
+          },
+          "away": {
+            "name": "Mallorca",
+            "logo": "https://media.api-sports.io/football/teams/798.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1644346,
+          "date": "2026-11-18T22:00:00+03:00",
+          "timestamp": 1795028400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 143,
+          "name": "Copa del Rey",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Round of 128"
+        },
+        "teams": {
+          "home": {
+            "name": "Badajoz",
+            "logo": "https://media.api-sports.io/football/teams/9382.png"
+          },
+          "away": {
+            "name": "Tenerife",
+            "logo": "https://media.api-sports.io/football/teams/719.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1616430,
+          "date": "2026-11-18T22:30:00+03:00",
+          "timestamp": 1795030200,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 451,
+          "name": "Tercera División RFEF - Group 13",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Group 13 - 7"
+        },
+        "teams": {
+          "home": {
+            "name": "Alcantarilla",
+            "logo": "https://media.api-sports.io/football/teams/20276.png"
+          },
+          "away": {
+            "name": "SFC Minerva",
+            "logo": "https://media.api-sports.io/football/teams/9821.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1616437,
+          "date": "2026-11-18T22:30:00+03:00",
+          "timestamp": 1795030200,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 451,
+          "name": "Tercera División RFEF - Group 13",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Group 13 - 7"
+        },
+        "teams": {
+          "home": {
+            "name": "San Javier",
+            "logo": "https://media.api-sports.io/football/teams/28116.png"
+          },
+          "away": {
+            "name": "Bullas Deportivo",
+            "logo": "https://media.api-sports.io/football/teams/28115.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1644353,
+          "date": "2026-11-18T22:30:00+03:00",
+          "timestamp": 1795030200,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 143,
+          "name": "Copa del Rey",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Round of 128"
+        },
+        "teams": {
+          "home": {
+            "name": "Deportiva Minera",
+            "logo": "https://media.api-sports.io/football/teams/9811.png"
+          },
+          "away": {
+            "name": "FC Cartagena",
+            "logo": "https://media.api-sports.io/football/teams/5262.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1644373,
+          "date": "2026-11-18T22:30:00+03:00",
+          "timestamp": 1795030200,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 143,
+          "name": "Copa del Rey",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Round of 128"
+        },
+        "teams": {
+          "home": {
+            "name": "Reddis",
+            "logo": "https://media.api-sports.io/football/teams/22136.png"
+          },
+          "away": {
+            "name": "Barakaldo",
+            "logo": "https://media.api-sports.io/football/teams/5251.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1616432,
+          "date": "2026-11-18T23:00:00+03:00",
+          "timestamp": 1795032000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 451,
+          "name": "Tercera División RFEF - Group 13",
+          "season": 2026,
+          "country": "Spain",
+          "round": "Group 13 - 7"
+        },
+        "teams": {
+          "home": {
+            "name": "Cotillas CD",
+            "logo": "https://media.api-sports.io/football/teams/28418.png"
+          },
+          "away": {
+            "name": "Unión Molinense",
+            "logo": "https://media.api-sports.io/football/teams/20278.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1648175,
+          "date": "2026-11-18T16:30:00+03:00",
+          "timestamp": 1795008600,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 892,
+          "name": "Coppa Italia Serie D",
+          "season": 2026,
+          "country": "Italy",
+          "round": "Round of 16"
+        },
+        "teams": {
+          "home": {
+            "name": "Ancona",
+            "logo": "https://media.api-sports.io/football/teams/897.png"
+          },
+          "away": {
+            "name": "Ternana",
+            "logo": "https://media.api-sports.io/football/teams/516.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1648176,
+          "date": "2026-11-18T16:30:00+03:00",
+          "timestamp": 1795008600,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 892,
+          "name": "Coppa Italia Serie D",
+          "season": 2026,
+          "country": "Italy",
+          "round": "Round of 16"
+        },
+        "teams": {
+          "home": {
+            "name": "Villa Valle",
+            "logo": "https://media.api-sports.io/football/teams/9460.png"
+          },
+          "away": {
+            "name": "Valenzana",
+            "logo": "https://media.api-sports.io/football/teams/26514.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1648177,
+          "date": "2026-11-18T16:30:00+03:00",
+          "timestamp": 1795008600,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 892,
+          "name": "Coppa Italia Serie D",
+          "season": 2026,
+          "country": "Italy",
+          "round": "Round of 16"
+        },
+        "teams": {
+          "home": {
+            "name": "Virtus Francavilla",
+            "logo": "https://media.api-sports.io/football/teams/873.png"
+          },
+          "away": {
+            "name": "Turris",
+            "logo": "https://media.api-sports.io/football/teams/5608.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1649064,
+          "date": "2026-11-18T16:30:00+03:00",
+          "timestamp": 1795008600,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 892,
+          "name": "Coppa Italia Serie D",
+          "season": 2026,
+          "country": "Italy",
+          "round": "Round of 16"
+        },
+        "teams": {
+          "home": {
+            "name": "Piacenza",
+            "logo": "https://media.api-sports.io/football/teams/872.png"
+          },
+          "away": {
+            "name": "Lucchese",
+            "logo": "https://media.api-sports.io/football/teams/889.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1650137,
+          "date": "2026-11-18T16:30:00+03:00",
+          "timestamp": 1795008600,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 892,
+          "name": "Coppa Italia Serie D",
+          "season": 2026,
+          "country": "Italy",
+          "round": "Round of 16"
+        },
+        "teams": {
+          "home": {
+            "name": "Sanremese",
+            "logo": "https://media.api-sports.io/football/teams/9439.png"
+          },
+          "away": {
+            "name": "Pro Patria",
+            "logo": "https://media.api-sports.io/football/teams/1706.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1648172,
+          "date": "2026-11-18T20:00:00+03:00",
+          "timestamp": 1795021200,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 892,
+          "name": "Coppa Italia Serie D",
+          "season": 2026,
+          "country": "Italy",
+          "round": "Round of 16"
+        },
+        "teams": {
+          "home": {
+            "name": "Igea Virtus",
+            "logo": "https://media.api-sports.io/football/teams/22310.png"
+          },
+          "away": {
+            "name": "Modica",
+            "logo": "https://media.api-sports.io/football/teams/28200.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1648171,
+          "date": "2026-11-18T20:30:00+03:00",
+          "timestamp": 1795023000,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 892,
+          "name": "Coppa Italia Serie D",
+          "season": 2026,
+          "country": "Italy",
+          "round": "Round of 16"
+        },
+        "teams": {
+          "home": {
+            "name": "Clodiense",
+            "logo": "https://media.api-sports.io/football/teams/9469.png"
+          },
+          "away": {
+            "name": "Cjarlins Muzane",
+            "logo": "https://media.api-sports.io/football/teams/9468.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1586638,
+          "date": "2026-11-18T21:00:00+03:00",
+          "timestamp": 1795024800,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 84,
+          "name": "Regionalliga - Nord",
+          "season": 2026,
+          "country": "Germany",
+          "round": "North - 18"
+        },
+        "teams": {
+          "home": {
+            "name": "SSV Jeddeloh",
+            "logo": "https://media.api-sports.io/football/teams/1655.png"
+          },
+          "away": {
+            "name": "Phönix Lübeck",
+            "logo": "https://media.api-sports.io/football/teams/12831.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1598953,
+          "date": "2026-11-18T21:00:00+03:00",
+          "timestamp": 1795024800,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 752,
+          "name": "Oberliga - Rheinland-Pfalz / Saar",
+          "season": 2026,
+          "country": "Germany",
+          "round": "Rheinland-Pfalz/Saar - 14"
+        },
+        "teams": {
+          "home": {
+            "name": "FV Engers 07",
+            "logo": "https://media.api-sports.io/football/teams/12767.png"
+          },
+          "away": {
+            "name": "TuS Koblenz",
+            "logo": "https://media.api-sports.io/football/teams/1648.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1648330,
+          "date": "2026-11-18T02:15:00+03:00",
+          "timestamp": 1794957300,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 134,
+          "name": "Torneo Federal A",
+          "season": 2026,
+          "country": "Argentina",
+          "round": "Quarter-finals"
+        },
+        "teams": {
+          "home": {
+            "name": "Olimpo Bahia Blanca",
+            "logo": "https://media.api-sports.io/football/teams/443.png"
+          },
+          "away": {
+            "name": "Kimberley Mar del Plata",
+            "logo": "https://media.api-sports.io/football/teams/3975.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1604054,
+          "date": "2026-11-18T17:30:00+03:00",
+          "timestamp": 1795012200,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 308,
+          "name": "Division 1",
+          "season": 2026,
+          "country": "Saudi-Arabia",
+          "round": "Regular Season - 11"
+        },
+        "teams": {
+          "home": {
+            "name": "Al-Adalah",
+            "logo": "https://media.api-sports.io/football/teams/2950.png"
+          },
+          "away": {
+            "name": "Al Orubah",
+            "logo": "https://media.api-sports.io/football/teams/2961.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1578779,
+          "date": "2026-11-18T22:45:00+03:00",
+          "timestamp": 1795031100,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 731,
+          "name": "Football League - Lowland League",
+          "season": 2026,
+          "country": "Scotland",
+          "round": "Regular Season"
+        },
+        "teams": {
+          "home": {
+            "name": "Lochee United",
+            "logo": "https://media.api-sports.io/football/teams/6745.png"
+          },
+          "away": {
+            "name": "Bo'ness United",
+            "logo": "https://media.api-sports.io/football/teams/15597.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1578789,
+          "date": "2026-11-18T22:45:00+03:00",
+          "timestamp": 1795031100,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 731,
+          "name": "Football League - Lowland League",
+          "season": 2026,
+          "country": "Scotland",
+          "round": "Regular Season"
+        },
+        "teams": {
+          "home": {
+            "name": "Auchinleck Talbot",
+            "logo": "https://media.api-sports.io/football/teams/6728.png"
+          },
+          "away": {
+            "name": "Troon FC",
+            "logo": "https://media.api-sports.io/football/teams/27926.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1578790,
+          "date": "2026-11-18T22:45:00+03:00",
+          "timestamp": 1795031100,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 731,
+          "name": "Football League - Lowland League",
+          "season": 2026,
+          "country": "Scotland",
+          "round": "Regular Season"
+        },
+        "teams": {
+          "home": {
+            "name": "Beith",
+            "logo": "https://media.api-sports.io/football/teams/21900.png"
+          },
+          "away": {
+            "name": " Johnstone Burgh",
+            "logo": "https://media.api-sports.io/football/teams/26605.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1578791,
+          "date": "2026-11-18T22:45:00+03:00",
+          "timestamp": 1795031100,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 731,
+          "name": "Football League - Lowland League",
+          "season": 2026,
+          "country": "Scotland",
+          "round": "Regular Season"
+        },
+        "teams": {
+          "home": {
+            "name": "Dunipace",
+            "logo": "https://media.api-sports.io/football/teams/15598.png"
+          },
+          "away": {
+            "name": "Linlithgow Rose",
+            "logo": "https://media.api-sports.io/football/teams/6744.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1578792,
+          "date": "2026-11-18T22:45:00+03:00",
+          "timestamp": 1795031100,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 731,
+          "name": "Football League - Lowland League",
+          "season": 2026,
+          "country": "Scotland",
+          "round": "Regular Season"
+        },
+        "teams": {
+          "home": {
+            "name": "East Stirlingshire",
+            "logo": "https://media.api-sports.io/football/teams/7439.png"
+          },
+          "away": {
+            "name": "Cowdenbeath",
+            "logo": "https://media.api-sports.io/football/teams/4667.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1578793,
+          "date": "2026-11-18T22:45:00+03:00",
+          "timestamp": 1795031100,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 731,
+          "name": "Football League - Lowland League",
+          "season": 2026,
+          "country": "Scotland",
+          "round": "Regular Season"
+        },
+        "teams": {
+          "home": {
+            "name": "Renfrew",
+            "logo": "https://media.api-sports.io/football/teams/27925.png"
+          },
+          "away": {
+            "name": "Largs Thistle",
+            "logo": "https://media.api-sports.io/football/teams/27924.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1649489,
+          "date": "2026-11-18T02:30:00+03:00",
+          "timestamp": 1794958200,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 241,
+          "name": "Copa Colombia",
+          "season": 2026,
+          "country": "Colombia",
+          "round": "Semi-finals"
+        },
+        "teams": {
+          "home": {
+            "name": "Atletico Nacional",
+            "logo": "https://media.api-sports.io/football/teams/1137.png"
+          },
+          "away": {
+            "name": "Once Caldas",
+            "logo": "https://media.api-sports.io/football/teams/1136.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1649490,
+          "date": "2026-11-18T04:30:00+03:00",
+          "timestamp": 1794965400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 241,
+          "name": "Copa Colombia",
+          "season": 2026,
+          "country": "Colombia",
+          "round": "Semi-finals"
+        },
+        "teams": {
+          "home": {
+            "name": "America de Cali",
+            "logo": "https://media.api-sports.io/football/teams/1138.png"
+          },
+          "away": {
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1650228,
+          "date": "2026-11-18T04:30:00+03:00",
+          "timestamp": 1794965400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 304,
+          "name": "Liga Panameña de Fútbol",
+          "season": 2026,
+          "country": "Panama",
+          "round": "Clausura - Quarter-finals\t"
+        },
+        "teams": {
+          "home": {
+            "name": "CD Arabe Unido",
+            "logo": "https://media.api-sports.io/football/teams/2882.png"
+          },
+          "away": {
+            "name": "Veraguas",
+            "logo": "https://media.api-sports.io/football/teams/15620.png"
+          }
+        }
+      },
+      {
+        "fixture": {
+          "id": 1560981,
+          "date": "2026-11-18T07:00:00+03:00",
+          "timestamp": 1794974400,
+          "status": {
+            "short": "NS"
+          }
+        },
+        "league": {
+          "id": 854,
+          "name": "WE League",
+          "season": 2026,
+          "country": "Japan",
+          "round": "Regular Season - 10"
+        },
+        "teams": {
+          "home": {
+            "name": "JEF United W",
+            "logo": "https://media.api-sports.io/football/teams/16948.png"
+          },
+          "away": {
+            "name": "Parceiro Nagano W",
+            "logo": "https://media.api-sports.io/football/teams/16954.png"
+          }
+        }
+      }
     ]
   },
   "days": {
@@ -4608,9 +7045,9 @@
     },
     "2026-11-16": {
       "digest": true,
-      "recap": false,
+      "recap": true,
       "won": 0,
-      "lost": 1
+      "lost": 2
     },
     "2026-11-17": {
       "digest": false,
@@ -4619,7 +7056,7 @@
       "lost": 0
     }
   },
-  "last_post_at": "2026-11-16T20:22:15.122381+03:00",
+  "last_post_at": "2026-11-17T12:42:27.150388+03:00",
   "used_ids": [
     1644693,
     1648272,
@@ -4634,6 +7071,7 @@
     1528988,
     1528989,
     1545617,
-    1528990
+    1528990,
+    1528992
   ]
 }
